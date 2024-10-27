@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Álgebra</title>
+
+    <!-- Incluir Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/styles/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <!-- Card 1 -->
+            <div class="col-md-3">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalConjuntos">
+                    <div class="card-body">
+                        <h5 class="card-title">Conjuntos</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-3">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalVectores">
+                    <div class="card-body">
+                        <h5 class="card-title">Vectores</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-3">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalMatrices">
+                    <div class="card-body">
+                        <h5 class="card-title">Matrices</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-md-3">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalEcuaciones">
+                    <div class="card-body">
+                        <h5 class="card-title">Ecuaciones</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col-md-3 mt-3">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalPolinomios">
+                    <div class="card-body">
+                        <h5 class="card-title">Polinomios</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="col-md-3 mt-3">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalDeterminantes">
+                    <div class="card-body">
+                        <h5 class="card-title">Determinantes</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Conjuntos -->
+    <div class="modal fade" id="modalConjuntos" tabindex="-1" aria-labelledby="modalConjuntosLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalConjuntosLabel">Seleccione una categoría - Conjuntos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="categoryFormConjuntos">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="conjuntos1" value="Conjuntos Básicos">
+                            <label class="form-check-label" for="conjuntos1">Conjuntos Básicos</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="conjuntos2" value="Operaciones con Conjuntos">
+                            <label class="form-check-label" for="conjuntos2">Operaciones con Conjuntos</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="saveCategoryConjuntos">Guardar selección</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Vectores -->
+    <div class="modal fade" id="modalVectores" tabindex="-1" aria-labelledby="modalVectoresLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalVectoresLabel">Seleccione una categoría - Vectores</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="categoryFormVectores">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="vectores1" value="Álgebra Vectorial">
+                            <label class="form-check-label" for="vectores1">Álgebra Vectorial</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="vectores2" value="Operaciones con Vectores">
+                            <label class="form-check-label" for="vectores2">Operaciones con Vectores</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="saveCategoryVectores">Guardar selección</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Matrices -->
+    <div class="modal fade" id="modalMatrices" tabindex="-1" aria-labelledby="modalMatricesLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalMatricesLabel">Seleccione una categoría - Matrices</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="categoryFormMatrices">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="matrices1" value="Operaciones con Matrices">
+                            <label class="form-check-label" for="matrices1">Operaciones con Matrices</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="matrices2" value="Matrices Especiales">
+                            <label class="form-check-label" for="matrices2">Matrices Especiales</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="saveCategoryMatrices">Guardar selección</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Ecuaciones -->
+    <div class="modal fade" id="modalEcuaciones" tabindex="-1" aria-labelledby="modalEcuacionesLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEcuacionesLabel">Seleccione una categoría - Ecuaciones</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="categoryFormEcuaciones">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="ecuaciones1" value="Ecuaciones Lineales">
+                            <label class="form-check-label" for="ecuaciones1">Ecuaciones Lineales</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="ecuaciones2" value="Ecuaciones Cuadráticas">
+                            <label class="form-check-label" for="ecuaciones2">Ecuaciones Cuadráticas</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="saveCategoryEcuaciones">Guardar selección</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Polinomios -->
+    <div class="modal fade" id="modalPolinomios" tabindex="-1" aria-labelledby="modalPolinomiosLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalPolinomiosLabel">Seleccione una categoría - Polinomios</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="categoryFormPolinomios">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="polinomios1" value="Suma de Polinomios">
+                            <label class="form-check-label" for="polinomios1">Suma de Polinomios</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="polinomios2" value="Multiplicación de Polinomios">
+                            <label class="form-check-label" for="polinomios2">Multiplicación de Polinomios</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="saveCategoryPolinomios">Guardar selección</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Determinantes -->
+    <div class="modal fade" id="modalDeterminantes" tabindex="-1" aria-labelledby="modalDeterminantesLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalDeterminantesLabel">Seleccione una categoría - Determinantes</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="categoryFormDeterminantes">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="determinantes1" value="Determinantes de Matrices">
+                            <label class="form-check-label" for="determinantes1">Determinantes de Matrices</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="determinantes2" value="Propiedades de Determinantes">
+                            <label class="form-check-label" for="determinantes2">Propiedades de Determinantes</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="saveCategoryDeterminantes">Guardar selección</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Incluir Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Función para manejar la selección de categoría
+        function handleCategorySave(modalId, formId) {
+            const selectedCategory = document.querySelector(`#${formId} input[name="category"]:checked`);
+            if (selectedCategory) {
+                // Almacenar la categoría seleccionada en el localStorage
+                localStorage.setItem('selectedCategory', selectedCategory.value);
+
+                // Cerrar el modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById(modalId));
+                modal.hide();
+
+                // Redirigir a la página del cuestionario
+                window.location.href = "/quiza";
+            } else {
+                alert('Por favor, selecciona una categoría.');
+            }
+        }
+
+        // Asignar eventos a los botones de guardar
+        document.getElementById('saveCategoryConjuntos').addEventListener('click', function() {
+            handleCategorySave('modalConjuntos', 'categoryFormConjuntos');
+        });
+
+        document.getElementById('saveCategoryVectores').addEventListener('click', function() {
+            handleCategorySave('modalVectores', 'categoryFormVectores');
+        });
+
+        document.getElementById('saveCategoryMatrices').addEventListener('click', function() {
+            handleCategorySave('modalMatrices', 'categoryFormMatrices');
+        });
+
+        document.getElementById('saveCategoryPolinomios').addEventListener('click', function() {
+            handleCategorySave('modalPolinomios', 'categoryFormPolinomios');
+        });
+
+        document.getElementById('saveCategoryDeterminantes').addEventListener('click', function() {
+            handleCategorySave('modalDeterminantes', 'categoryFormDeterminantes');
+        });
+</script>
+</body>
+
+</html>

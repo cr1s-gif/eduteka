@@ -99,17 +99,38 @@ nav {
     z-index: -1;
 
 }
-.text-center{
+.questionIndex {
+    display: flex;
+    justify-content: center;
+}
+.text-center {
     background-color: #FFFFFF;
     border-radius: 20px;
-    width:80%;
-    position: center;
+    width: 98%;
     height: 30%;
     padding: 10px;
+    box-sizing: border-box; /* Opcional, para ajustar el relleno en el tamaño del div */
+    text-align: center;
+    
+
 }
-.form-check-label{
-    background-color: #000000;
+.btn.btn-outline-primary.form-check-input.mb-2{
+    background-color: #f0f0f0;
+    border: 2px solid #000;
+    width: 100%;
+    height: 50%;
 }
+.btn.btn-outline-primary.form-check-input.mb-2:hover {
+    color: #000; /* Cambia el color al pasar el mouse */
+    background-color: #e0e0e0; /* Cambia el fondo al pasar el mouse */
+}
+
+.btn.btn-outline-primary.form-check-input.mb-2.active {
+    color: #fff; /* Cambia el color del texto al activar el botón */
+    background-color: #007bff; /* Cambia el fondo cuando está activo */
+}
+
+
 header{
     background-color: #6b5ae4;
     color: #fff;

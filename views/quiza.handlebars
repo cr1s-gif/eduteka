@@ -12,19 +12,15 @@
 <body>
 
     <div class="container my-5">
+                <div id="questionIndex"></div>
         <h2 class="text-center" id="questionTitle">Pregunta</h2>
         <form id="quizForm">
             <div id="answers" class="mt-4">
-                <div class="form-check">
-                    <input type="radio" class="form-check-input" name="answer" id="answer1" value="1">
-                    <label class="form-check-label" for="answer1">Respuesta 1</label>
-                </div>
+                <!-- Las respuestas se generarán aquí con JavaScript -->
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Enviar</button>
         </form>
         <button id="hintButton" class="btn btn-info mt-3">Obtener una pista</button>
         <div id="hint" class="mt-3 text-success"></div>
-        <div id="questionIndex"></div>
     </div>
 
     <!-- Incluir Bootstrap JS -->
@@ -100,58 +96,75 @@
         let currentQuestionIndex = 0;
         let userAnswers = [];
 
-        function mostrarPregunta() {
-            const preguntaSeleccionada = preguntasSeleccionadas[currentQuestionIndex];
-            document.getElementById('questionTitle').textContent = preguntaSeleccionada.pregunta;
+let selectedAnswer = null; // Variable para almacenar la respuesta seleccionada
 
-            // Crear respuestas aleatorias
-            const respuestas = [preguntaSeleccionada.correcta, ...preguntaSeleccionada.incorrectas];
-            respuestas.sort(() => Math.random() - 0.5); // Mezclar respuestas
+function mostrarPregunta() {
+    const preguntaSeleccionada = preguntasSeleccionadas[currentQuestionIndex];
+    document.getElementById('questionTitle').textContent = preguntaSeleccionada.pregunta;
 
-            const answersDiv = document.getElementById('answers');
-            answersDiv.innerHTML = ''; // Limpiar respuestas anteriores
-            respuestas.forEach(respuesta => {
-                const label = document.createElement('label');
-                label.className = "form-check-label";
-                // Usar etiquetas TeX para las respuestas
-                label.innerHTML = `<input type="radio" name="answer" value="${respuesta}" class="form-check-input"> \\(${respuesta}\\)`;
-                answersDiv.appendChild(label);
-                answersDiv.appendChild(document.createElement('br'));
-            });
+    // Crear respuestas aleatorias
+    const respuestas = [preguntaSeleccionada.correcta, ...preguntaSeleccionada.incorrectas];
+    respuestas.sort(() => Math.random() - 0.5); // Mezclar respuestas
 
-            document.getElementById('questionIndex').textContent = `Pregunta ${currentQuestionIndex + 1} de ${preguntasSeleccionadas.length}`;
+    const answersDiv = document.getElementById('answers');
+    answersDiv.innerHTML = ''; // Limpiar respuestas anteriores
+    respuestas.forEach(respuesta => {
+        const button = document.createElement('button');
+        button.className = "btn btn-outline-primary form-check-input mb-2"; // Estilo del botón
+        button.textContent = `\\(${respuesta}\\)`; // Usar etiquetas TeX para las respuestas
 
-            // Forzar el renderizado de MathJax para las nuevas alternativas
-            MathJax.typesetPromise().then(() => {
-                console.log("MathJax ha renderizado las ecuaciones.");
-            }).catch((err) => console.log("Error al renderizar MathJax: ", err));
-        }
+        button.onclick = function() {
+            // Remover clase 'active' de todos los botones
+            document.querySelectorAll('#answers button').forEach(btn => btn.classList.remove('active'));
+            // Agregar clase 'active' solo al botón seleccionado
+            button.classList.add('active');
+            // Guardar la respuesta seleccionada
+            selectedAnswer = respuesta;
+        };
 
-        // Manejar el envío del formulario
-        document.getElementById('quizForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const selectedAnswer = document.querySelector('input[name="answer"]:checked');
-            if (!selectedAnswer) {
-                alert('Por favor, selecciona una respuesta.');
-                return;
-            }
-            const isCorrect = selectedAnswer.value === preguntasSeleccionadas[currentQuestionIndex].correcta;
-            userAnswers.push({
-                pregunta: preguntasSeleccionadas[currentQuestionIndex].pregunta,
-                respuestaSeleccionada: selectedAnswer.value,
-                esCorrecto: isCorrect
-            });
+        answersDiv.appendChild(button);
+    });
 
-            // Ir a la siguiente pregunta o mostrar resultados
-            currentQuestionIndex++;
-            if (currentQuestionIndex < preguntasSeleccionadas.length) {
-                mostrarPregunta();
-            } else {
-                // Redirigir a la página de resultados
-                localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
-                window.location.href = "/result";
-            }
-        });
+    document.getElementById('questionIndex').textContent = `Pregunta ${currentQuestionIndex + 1} de ${preguntasSeleccionadas.length}`;
+
+    // Forzar el renderizado de MathJax para las nuevas alternativas
+    MathJax.typesetPromise().then(() => {
+        console.log("MathJax ha renderizado las ecuaciones.");
+    }).catch((err) => console.log("Error al renderizar MathJax: ", err));
+}
+
+// Manejar el envío del formulario
+document.getElementById('quizForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Validar que se haya seleccionado una respuesta
+    if (!selectedAnswer) {
+        alert('Por favor, selecciona una respuesta.');
+        return;
+    }
+
+    // Registrar la respuesta del usuario
+    const isCorrect = selectedAnswer === preguntasSeleccionadas[currentQuestionIndex].correcta;
+    userAnswers.push({
+        pregunta: preguntasSeleccionadas[currentQuestionIndex].pregunta,
+        respuestaSeleccionada: selectedAnswer,
+        esCorrecto: isCorrect
+    });
+
+    // Reiniciar la respuesta seleccionada
+    selectedAnswer = null;
+
+    // Ir a la siguiente pregunta o mostrar resultados
+    currentQuestionIndex++;
+    if (currentQuestionIndex < preguntasSeleccionadas.length) {
+        mostrarPregunta();
+    } else {
+        // Redirigir a la página de resultados
+        localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
+        window.location.href = "/result";
+    }
+});
+
 
         // Obtener pista desde el backend usando ChatGPT
         document.getElementById('hintButton').addEventListener('click', function() {

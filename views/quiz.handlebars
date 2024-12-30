@@ -11,8 +11,8 @@
 </head>
 <body>
 
-    <div class="container my-5">
-                <div id="questionIndex"></div>
+    <div class="container my-5" >
+        <div id="questionIndex"></div>
         <h2 class="text-center" id="questionTitle">Pregunta</h2>
         <form id="quizForm">
             <div id="answers" class="mt-4">
@@ -21,6 +21,24 @@
         </form>
         <button id="hintButton" class="btn btn-info mt-3">Obtener una pista</button>
         <div id="hint" class="mt-3 text-success"></div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="hintModal" tabindex="-1" aria-labelledby="hintModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="hintModalLabel">Pista</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="hintImage" src="" alt="Pista" class="img-fluid" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Incluir Bootstrap JS -->
@@ -36,27 +54,31 @@
         }
 
         // Banco de preguntas
-      const preguntas = {
+        const preguntas = {
             "Cálculo Avanzado": [
                 { 
                     "pregunta": "¿Cuál es el dominio de la inecuación \\( \\frac{1}{x - 2} > 0 \\)?", 
                     "correcta": "x > 2", 
-                    "incorrectas": ["x < 2", "x \\geq 2", "x = 2"] 
+                    "incorrectas": ["x < 2", "x \\geq 2", "x = 2"],
+                    "imagen": "imagenes/dominio-1.png" // URL de la imagen
                 },
                 { 
                     "pregunta": "¿Qué condición debe cumplirse para que \\( \\sqrt{2x - 5} \\geq 0 \\)?", 
                     "correcta": "x \\geq 5/2", 
-                    "incorrectas": ["x > 5/2", "x \\geq 0", "x \\leq 5/2"] 
+                    "incorrectas": ["x > 5/2", "x \\geq 0", "x \\leq 5/2"],
+                    "imagen": "imagenes/condicion-1.png"
                 },
                 { 
                     "pregunta": "¿Cuál es el dominio de la inecuación \\( \\frac{x + 3}{x^2 - 9} \\leq 0 \\)?", 
                     "correcta": "x < -3 o 0 \\leq x < 3", 
-                    "incorrectas": ["x > 3", "x \\neq \\pm 3", "x > 0 y x \\neq 3"] 
+                    "incorrectas": ["x > 3", "x \\neq \\pm 3", "x > 0 y x \\neq 3"],
+                    "imagen": "imagenes/dominio-2.png"
                 },
                 { 
                     "pregunta": "¿Cuál es el dominio de la inecuación \\( \\frac{x^2 - 1}{x - 2} > 0 \\)?", 
                     "correcta": "x \\in (-\\infty, -1) \\cup (1, 2) \\cup (2, \\infty)", 
-                    "incorrectas": ["x \\neq 2", "x > 2", "x \\leq 1"] 
+                    "incorrectas": ["x \\neq 2", "x > 2", "x \\leq 1"],
+                    "imagen": "imagenes/dominio-3.png"
                 }
             ]
         };
@@ -73,99 +95,96 @@
         let currentQuestionIndex = 0;
         let userAnswers = [];
 
-let selectedAnswer = null; // Variable para almacenar la respuesta seleccionada
+        let selectedAnswer = null; // Variable para almacenar la respuesta seleccionada
 
-function mostrarPregunta() {
-    const preguntaSeleccionada = preguntasSeleccionadas[currentQuestionIndex];
-    document.getElementById('questionTitle').textContent = preguntaSeleccionada.pregunta;
+        function mostrarPregunta() {
+            const preguntaSeleccionada = preguntasSeleccionadas[currentQuestionIndex];
+            document.getElementById('questionTitle').textContent = preguntaSeleccionada.pregunta;
 
-    // Crear respuestas aleatorias
-    const respuestas = [preguntaSeleccionada.correcta, ...preguntaSeleccionada.incorrectas];
-    respuestas.sort(() => Math.random() - 0.5); // Mezclar respuestas
+            // Crear respuestas aleatorias
+            const respuestas = [preguntaSeleccionada.correcta, ...preguntaSeleccionada.incorrectas];
+            respuestas.sort(() => Math.random() - 0.5); // Mezclar respuestas
 
-    const answersDiv = document.getElementById('answers');
-    answersDiv.innerHTML = ''; // Limpiar respuestas anteriores
-    respuestas.forEach(respuesta => {
-        const button = document.createElement('button');
-        button.className = "btn btn-outline-primary form-check-input mb-2"; // Estilo del botón
-        button.textContent = `\\(${respuesta}\\)`; // Usar etiquetas TeX para las respuestas
+            const answersDiv = document.getElementById('answers');
+            answersDiv.innerHTML = ''; // Limpiar respuestas anteriores
+            respuestas.forEach(respuesta => {
+                const button = document.createElement('button');
+                button.className = "btn btn-outline-primary form-check-input mb-2"; // Estilo del botón
+                button.textContent = `\\(${respuesta}\\)`; // Usar etiquetas TeX para las respuestas
 
-        button.onclick = function() {
-            // Remover clase 'active' de todos los botones
-            document.querySelectorAll('#answers button').forEach(btn => btn.classList.remove('active'));
-            // Agregar clase 'active' solo al botón seleccionado
-            button.classList.add('active');
-            // Guardar la respuesta seleccionada
-            selectedAnswer = respuesta;
-        };
+                button.onclick = function() {
+                    // Remover clase 'active' de todos los botones
+                    document.querySelectorAll('#answers button').forEach(btn => btn.classList.remove('active'));
+                    // Agregar clase 'active' solo al botón seleccionado
+                    button.classList.add('active');
+                    // Guardar la respuesta seleccionada
+                    selectedAnswer = respuesta;
+                };
 
-        answersDiv.appendChild(button);
-    });
-
-    document.getElementById('questionIndex').textContent = `Pregunta ${currentQuestionIndex + 1} de ${preguntasSeleccionadas.length}`;
-
-    // Forzar el renderizado de MathJax para las nuevas alternativas
-    MathJax.typesetPromise().then(() => {
-        console.log("MathJax ha renderizado las ecuaciones.");
-    }).catch((err) => console.log("Error al renderizar MathJax: ", err));
-}
-
-// Manejar el envío del formulario
-document.getElementById('quizForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // Validar que se haya seleccionado una respuesta
-    if (!selectedAnswer) {
-        alert('Por favor, selecciona una respuesta.');
-        return;
-    }
-
-    // Registrar la respuesta del usuario
-    const isCorrect = selectedAnswer === preguntasSeleccionadas[currentQuestionIndex].correcta;
-    userAnswers.push({
-        pregunta: preguntasSeleccionadas[currentQuestionIndex].pregunta,
-        respuestaSeleccionada: selectedAnswer,
-        esCorrecto: isCorrect
-    });
-
-    // Reiniciar la respuesta seleccionada
-    selectedAnswer = null;
-
-    // Ir a la siguiente pregunta o mostrar resultados
-    currentQuestionIndex++;
-    if (currentQuestionIndex < preguntasSeleccionadas.length) {
-        mostrarPregunta();
-    } else {
-        // Redirigir a la página de resultados
-        localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
-        window.location.href = "/result";
-    }
-});
-
-
-        // Obtener pista desde el backend usando ChatGPT
-        document.getElementById('hintButton').addEventListener('click', function() {
-            const preguntaSeleccionada = preguntasSeleccionadas[currentQuestionIndex].pregunta;
-
-            fetch('http://quiz/pista', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ pregunta: preguntaSeleccionada }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('hint').textContent = `Pista: ${data.pista}`;
-            })
-            .catch(error => {
-                console.error('Error al obtener la pista:', error);
-                alert('Hubo un error al obtener la pista.');
+                answersDiv.appendChild(button);
             });
+
+            document.getElementById('questionIndex').textContent = `Pregunta ${currentQuestionIndex + 1} de ${preguntasSeleccionadas.length}`;
+
+            // Forzar el renderizado de MathJax para las nuevas alternativas
+            MathJax.typesetPromise().then(() => {
+                console.log("MathJax ha renderizado las ecuaciones.");
+            }).catch((err) => console.log("Error al renderizar MathJax: ", err));
+        }
+
+        // Manejar el envío del formulario
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Validar que se haya seleccionado una respuesta
+            if (!selectedAnswer) {
+                alert('Por favor, selecciona una respuesta.');
+                return;
+            }
+
+            // Registrar la respuesta del usuario
+            const isCorrect = selectedAnswer === preguntasSeleccionadas[currentQuestionIndex].correcta;
+            userAnswers.push({
+                pregunta: preguntasSeleccionadas[currentQuestionIndex].pregunta,
+                respuestaSeleccionada: selectedAnswer,
+                esCorrecto: isCorrect
+            });
+
+            // Reiniciar la respuesta seleccionada
+            selectedAnswer = null;
+
+            // Ir a la siguiente pregunta o mostrar resultados
+            currentQuestionIndex++;
+            if (currentQuestionIndex < preguntasSeleccionadas.length) {
+                mostrarPregunta();
+            } else {
+                // Redirigir a la página de resultados
+                localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
+                window.location.href = "/result";
+            }
         });
 
         // Mostrar la primera pregunta al cargar
         mostrarPregunta();
+
+        // Mostrar el modal con la imagen de la pista al hacer clic en el botón
+        document.getElementById('hintButton').addEventListener('click', function() {
+            const preguntaSeleccionada = preguntasSeleccionadas[currentQuestionIndex];
+
+            // Obtener la imagen asociada a la pregunta actual
+            const imagenUrl = preguntaSeleccionada.imagen;
+
+            // Actualizar la fuente de la imagen en el modal
+            document.getElementById('hintImage').src = imagenUrl;
+
+            // Inicializar el modal de Bootstrap
+            const hintModal = new bootstrap.Modal(document.getElementById('hintModal'), {
+                keyboard: false // Se puede configurar para que no cierre el modal con la tecla ESC
+            });
+
+            // Mostrar el modal
+            hintModal.show();
+        });
     </script>
 </body>
 </html>

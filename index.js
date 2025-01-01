@@ -13,6 +13,9 @@ app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 
+// Servir archivos estáticos
+app.use(express.static('public'));
+
 // Rutas
 app.get('/', (req, res) => {
   res.render('home');
@@ -37,8 +40,7 @@ app.get('/result', (req, res) => {
 
 
 
-// Servir archivos estáticos
-app.use(express.static('public'));
+
 
 // Iniciar el servidor
 app.listen(3000, () => {

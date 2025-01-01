@@ -17,7 +17,7 @@
         <div class="row justify-content-center">
             <!-- Card 1 -->
             <div class="col-md-3">
-                <div class="card" data-bs-toggle="modal" data-bs-target="#modalCalculo">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalInecuaciones">
                     <div class="card-body">
                         <h5 class="card-title">Inecuaciones</h5>
                     </div>
@@ -26,7 +26,7 @@
 
             <!-- Card 2 -->
             <div class="col-md-3">
-                <div class="card" data-bs-toggle="modal" data-bs-target="#modalAlgebra">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalFunciones">
                     <div class="card-body">
                         <h5 class="card-title">Funciones</h5>
                     </div>
@@ -35,16 +35,16 @@
 
             <!-- Card 3 -->
             <div class="col-md-3">
-                <div class="card" data-bs-toggle="modal" data-bs-target="#modalGeometria">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalLimites">
                     <div class="card-body">
-                        <h5 class="card-title">Limites</h5>
+                        <h5 class="card-title">Límites</h5>
                     </div>
                 </div>
             </div>
 
             <!-- Card 4 -->
             <div class="col-md-3">
-                <div class="card" data-bs-toggle="modal" data-bs-target="#modalTrigonometria">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalDerivadas">
                     <div class="card-body">
                         <h5 class="card-title">Derivadas</h5>
                     </div>
@@ -53,7 +53,7 @@
 
             <!-- Card 5 -->
             <div class="col-md-3 mt-3">
-                <div class="card" data-bs-toggle="modal" data-bs-target="#modalEstadistica">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalIntegrales">
                     <div class="card-body">
                         <h5 class="card-title">Integrales</h5>
                     </div>
@@ -62,7 +62,7 @@
 
             <!-- Card 6 -->
             <div class="col-md-3 mt-3">
-                <div class="card" data-bs-toggle="modal" data-bs-target="#modalProbabilidad">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalSeries">
                     <div class="card-body">
                         <h5 class="card-title">Series</h5>
                     </div>
@@ -71,222 +71,253 @@
         </div>
     </div>
 
-    <!-- Modal de Cálculo -->
-    <div class="modal fade" id="modalCalculo" tabindex="-1" aria-labelledby="modalCalculoLabel" aria-hidden="true">
+    <!-- Modal de Inecuaciones -->
+    <div class="modal fade" id="modalInecuaciones" tabindex="-1" aria-labelledby="modalInecuacionesLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalCalculoLabel">Seleccione una categoría - Cálculo</h5>
+                    <h5 class="modal-title" id="modalInecuacionesLabel">Seleccione una categoría - Inecuaciones</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="categoryFormCalculo">
+                    <form id="categoryFormInecuaciones">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="category" id="calculo1" value="Cálculo Avanzado">
-                            <label class="form-check-label" for="calculo1">Cálculo Avanzado</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="category" id="calculo2" value="Cálculo Básico">
-                            <label class="form-check-label" for="calculo2">Cálculo Básico</label>
+                            <input class="form-check-input" type="radio" name="category" id="inecuaciones1" value="DominioInecuaciones">
+                            <label class="form-check-label" for="inecuaciones1">Dominio</label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="saveCategoryCalculo">Guardar selección</button>
+                    <button type="button" class="btn btn-primary" id="saveCategoryInecuaciones">Guardar selección</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal de Álgebra -->
-    <div class="modal fade" id="modalAlgebra" tabindex="-1" aria-labelledby="modalAlgebraLabel" aria-hidden="true">
+    <!-- Modal de Funciones -->
+    <div class="modal fade" id="modalFunciones" tabindex="-1" aria-labelledby="modalFuncionesLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalAlgebraLabel">Seleccione una categoría - Álgebra</h5>
+                    <h5 class="modal-title" id="modalFuncionesLabel">Seleccione una categoría - Funciones</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="categoryFormAlgebra">
+                    <form id="categoryFormFunciones">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="category" id="algebra1" value="Álgebra Lineal">
-                            <label class="form-check-label" for="algebra1">Álgebra Lineal</label>
+                            <input class="form-check-input" type="radio" name="category" id="funciones1" value="DominioFunciones">
+                            <label class="form-check-label" for="funciones1">Dominio</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="category" id="algebra2" value="Álgebra Básica">
-                            <label class="form-check-label" for="algebra2">Álgebra Básica</label>
+                            <input class="form-check-input" type="radio" name="category" id="funciones2" value="Recorrido">
+                            <label class="form-check-label" for="funciones2">Recorrido</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="funciones3" value="Gráfica de función">
+                            <label class="form-check-label" for="funciones3">Gráfica de función</label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="saveCategoryAlgebra">Guardar selección</button>
+                    <button type="button" class="btn btn-primary" id="saveCategoryFunciones">Guardar selección</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal de Geometría -->
-    <div class="modal fade" id="modalGeometria" tabindex="-1" aria-labelledby="modalGeometriaLabel" aria-hidden="true">
+    <!-- Modal de Límites -->
+    <div class="modal fade" id="modalLimites" tabindex="-1" aria-labelledby="modalLimitesLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalGeometriaLabel">Seleccione una categoría - Geometría</h5>
+                    <h5 class="modal-title" id="modalLimitesLabel">Seleccione una categoría - Límites</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="categoryFormGeometria">
+                    <form id="categoryFormLimites">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="category" id="geometria1" value="Geometría Analítica">
-                            <label class="form-check-label" for="geometria1">Geometría Analítica</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="category" id="geometria2" value="Geometría Euclidiana">
-                            <label class="form-check-label" for="geometria2">Geometría Euclidiana</label>
+                            <input class="form-check-input" type="radio" name="category" id="limites1" value="Cálculo de límite">
+                            <label class="form-check-label" for="limites1">Cálculo de límite</label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="saveCategoryGeometria">Guardar selección</button>
+                    <button type="button" class="btn btn-primary" id="saveCategoryLimites">Guardar selección</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal de Trigonometría -->
-    <div class="modal fade" id="modalTrigonometria" tabindex="-1" aria-labelledby="modalTrigonometriaLabel" aria-hidden="true">
+    <!-- Modal de Derivadas -->
+    <div class="modal fade" id="modalDerivadas" tabindex="-1" aria-labelledby="modalDerivadasLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalTrigonometriaLabel">Seleccione una categoría - Trigonometría</h5>
+                    <h5 class="modal-title" id="modalDerivadasLabel">Seleccione una categoría - Derivadas</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="categoryFormTrigonometria">
+                    <form id="categoryFormDerivadas">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="category" id="trigonometria1" value="Trigonometría Avanzada">
-                            <label class="form-check-label" for="trigonometria1">Trigonometría Avanzada</label>
+                            <input class="form-check-input" type="radio" name="category" id="derivadas1" value="Cálculo de derivada">
+                            <label class="form-check-label" for="derivadas1">Cálculo de derivada</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="category" id="trigonometria2" value="Trigonometría Básica">
-                            <label class="form-check-label" for="trigonometria2">Trigonometría Básica</label>
+                            <input class="form-check-input" type="radio" name="category" id="derivadas2" value="Regla de la cadena">
+                            <label class="form-check-label" for="derivadas2">Regla de la cadena</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="derivadas3" value="Puntos de inflexión">
+                            <label class="form-check-label" for="derivadas3">Puntos de inflexión</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="derivadas4" value="Derivada implícita">
+                            <label class="form-check-label" for="derivadas4">Derivada implícita</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="derivadas5" value="Razón de cambio">
+                            <label class="form-check-label" for="derivadas5">Razón de cambio</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="derivadas6" value="Derivadas en varias variables">
+                            <label class="form-check-label" for="derivadas6">Derivadas en varias variables</label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="saveCategoryTrigonometria">Guardar selección</button>
+                    <button type="button" class="btn btn-primary" id="saveCategoryDerivadas">Guardar selección</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal de Estadística -->
-    <div class="modal fade" id="modalEstadistica" tabindex="-1" aria-labelledby="modalEstadisticaLabel" aria-hidden="true">
+    <!-- Modal de Integrales -->
+    <div class="modal fade" id="modalIntegrales" tabindex="-1" aria-labelledby="modalIntegralesLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalEstadisticaLabel">Seleccione una categoría - Estadística</h5>
+                    <h5 class="modal-title" id="modalIntegralesLabel">Seleccione una categoría - Integrales</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="categoryFormEstadistica">
+                    <form id="categoryFormIntegrales">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="category" id="estadistica1" value="Estadística Descriptiva">
-                            <label class="form-check-label" for="estadistica1">Estadística Descriptiva</label>
+                            <input class="form-check-input" type="radio" name="category" id="integrales1" value="Primitiva">
+                            <label class="form-check-label" for="integrales1">Primitiva</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="category" id="estadistica2" value="Estadística Inferencial">
-                            <label class="form-check-label" for="estadistica2">Estadística Inferencial</label>
+                            <input class="form-check-input" type="radio" name="category" id="integrales2" value="Suma de Riemann">
+                            <label class="form-check-label" for="integrales2">Suma de Riemann</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="integrales3" value="Sustitución simple">
+                            <label class="form-check-label" for="integrales3">Sustitución simple</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="integrales4" value="Integral trigonométrica">
+                            <label class="form-check-label" for="integrales4">Integral trigonométrica</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="integrales5" value="Integrales por partes">
+                            <label class="form-check-label" for="integrales5">Integrales por partes</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="integrales6" value="Integrales por fracciones parciales">
+                            <label class="form-check-label" for="integrales6">Integrales por fracciones parciales</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="integrales7" value="Integrales indefinidas">
+                            <label class="form-check-label" for="integrales7">Integrales indefinidas</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="integrales8" value="Integrales múltiples">
+                            <label class="form-check-label" for="integrales8">Integrales múltiples</label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="saveCategoryEstadistica">Guardar selección</button>
+                    <button type="button" class="btn btn-primary" id="saveCategoryIntegrales">Guardar selección</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal de Probabilidad -->
-    <div class="modal fade" id="modalProbabilidad" tabindex="-1" aria-labelledby="modalProbabilidadLabel" aria-hidden="true">
+    <!-- Modal de Series -->
+    <div class="modal fade" id="modalSeries" tabindex="-1" aria-labelledby="modalSeriesLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalProbabilidadLabel">Seleccione una categoría - Probabilidad</h5>
+                    <h5 class="modal-title" id="modalSeriesLabel">Seleccione una categoría - Series</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="categoryFormProbabilidad">
+                    <form id="categoryFormSeries">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="category" id="probabilidad1" value="Probabilidad Clásica">
-                            <label class="form-check-label" for="probabilidad1">Probabilidad Clásica</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="category" id="probabilidad2" value="Probabilidad Condicional">
-                            <label class="form-check-label" for="probabilidad2">Probabilidad Condicional</label>
+                            <input class="form-check-input" type="radio" name="category" id="series1" value="Cálculo de serie">
+                            <label class="form-check-label" for="series1">Cálculo de serie</label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="saveCategoryProbabilidad">Guardar selección</button>
+                    <button type="button" class="btn btn-primary" id="saveCategorySeries">Guardar selección</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Incluir Bootstrap JS y dependencias -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JS personalizado -->
+<script>
+    // Función para manejar la selección de categoría
+    function handleCategorySave(modalId, formId) {
+        const selectedCategory = document.querySelector(`#${formId} input[name="category"]:checked`);
+        if (selectedCategory) {
+            // Almacenar la categoría seleccionada en el localStorage
+            localStorage.setItem('selectedCategory', selectedCategory.value);
 
-    <!-- JS personalizado -->
-    <script>
-        // Función para manejar la selección de categoría
-        function handleCategorySave(modalId, formId) {
-            const selectedCategory = document.querySelector(`#${formId} input[name="category"]:checked`);
-            if (selectedCategory) {
-                // Almacenar la categoría seleccionada en el localStorage
-                localStorage.setItem('selectedCategory', selectedCategory.value);
+            // Cerrar el modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById(modalId));
+            modal.hide();
 
-                // Cerrar el modal
-                const modal = bootstrap.Modal.getInstance(document.getElementById(modalId));
-                modal.hide();
-
-                // Redirigir a la página del cuestionario
-                window.location.href = "/quiz";
-            } else {
-                alert('Por favor, selecciona una categoría.');
-            }
+            // Redirigir a la página del cuestionario
+            window.location.href = "/quiz";
+        } else {
+            alert('Por favor, selecciona una categoría.');
         }
+    }
 
-        // Asignar eventos a los botones de guardar
-        document.getElementById('saveCategoryCalculo').addEventListener('click', function() {
-            handleCategorySave('modalCalculo', 'categoryFormCalculo');
-        });
+    // Asignar eventos a los botones de guardar
+    document.getElementById('saveCategoryInecuaciones').addEventListener('click', function() {
+        handleCategorySave('modalInecuaciones', 'categoryFormInecuaciones');
+    });
 
-        document.getElementById('saveCategoryAlgebra').addEventListener('click', function() {
-            handleCategorySave('modalAlgebra', 'categoryFormAlgebra');
-        });
+    document.getElementById('saveCategoryFunciones').addEventListener('click', function() {
+        handleCategorySave('modalFunciones', 'categoryFormFunciones');
+    });
 
-        document.getElementById('saveCategoryGeometria').addEventListener('click', function() {
-            handleCategorySave('modalGeometria', 'categoryFormGeometria');
-        });
+    document.getElementById('saveCategoryLimites').addEventListener('click', function() {
+        handleCategorySave('modalLimites', 'categoryFormLimites');
+    });
 
-        document.getElementById('saveCategoryTrigonometria').addEventListener('click', function() {
-            handleCategorySave('modalTrigonometria', 'categoryFormTrigonometria');
-        });
+    document.getElementById('saveCategoryDerivadas').addEventListener('click', function() {
+        handleCategorySave('modalDerivadas', 'categoryFormDerivadas');
+    });
 
-        document.getElementById('saveCategoryEstadistica').addEventListener('click', function() {
-            handleCategorySave('modalEstadistica', 'categoryFormEstadistica');
-        });
+    document.getElementById('saveCategoryIntegrales').addEventListener('click', function() {
+        handleCategorySave('modalIntegrales', 'categoryFormIntegrales');
+    });
 
-        document.getElementById('saveCategoryProbabilidad').addEventListener('click', function() {
-            handleCategorySave('modalProbabilidad', 'categoryFormProbabilidad');
-        });
-    </script>
+    document.getElementById('saveCategorySeries').addEventListener('click', function() {
+        handleCategorySave('modalSeries', 'categoryFormSeries');
+    });
+</script>
+
 </body>
 
 </html>

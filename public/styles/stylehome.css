@@ -1,10 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@100;200;300;400;500;600;700;800&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto Condensed';
-}
+
 body{
     height: 100vh;
     background:linear-gradient(#0849ea,#04277c,#000000);
@@ -14,7 +8,7 @@ body{
   flex-direction: column;
 }
 nav {
-  background-color: #0b2e83; 
+  background-color: #000000; 
   width: 99%;
   height: 6%;
   border-radius: 80px;
@@ -36,7 +30,7 @@ nav {
 }
 
 .navbar li a:hover {
-  background-color: #10a4ad;
+  background-color: #373efbDD;
   border-radius: 8px;
 }
 /* Estilo básico para los inputs de radio */
@@ -99,18 +93,6 @@ nav {
     z-index: -1;
 
 }
-.text-center{
-    background-color: #FFFFFF;
-    border-radius: 20px;
-    width:80%;
-    position: center;
-    height: 30%;
-    padding: 10px;
-}
-
-.form-check-input{
-    background-color: #000000;
-}
 header{
     background-color: #6b5ae4;
     color: #fff;
@@ -158,73 +140,11 @@ header{
     background-color: #2a2929;
 }
 
-.puntaje, .jugador{
-    display: flex;
-    align-items: center;
+.imagenes{
+    width: 200px;
+    height: 200px;
+    border-radius: 80px;
 }
-.puntaje img, .jugador img{
-    width: 40px;
-    background-color: #3f40ae;
-    border-radius: 50%;
-    border: 2px solid #ffe43a;
-    z-index: 2;
-}
-.puntaje .puntos{
-    background-color: #3f40ae;
-    width: 90px;
-    padding: 5px;
-    border-radius: 0 30px 30px 0;
-    margin-left: -5px;
-    z-index: 0;
-    font-size: 16px;
-
-}
-
-.jugador .nombre{
-    background-color: #3f40ae;
-    width: 90px;
-    padding: 5px;
-    border-radius: 30px 0px 0px 30px;
-    margin-right: -5px;
-    font-size: 16px;
-}
-#answers {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
-    gap: 20px; /* Espaciado entre los botones */
-    justify-content: center; /* Centrar las columnas */
-    align-items: center; /* Centrar verticalmente */
-}
-
-#answers button {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente el contenido */
-    align-items: center; /* Centra verticalmente el contenido */
-    text-align: center; /* Centra el texto dentro del botón */
-    color: black; /* Texto en negro */
-    background-color: #ffffff; /* Fondo blanco */
-    border: 2px solid #007bff; /* Borde azul */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 10px 15px; /* Espaciado interno */
-    margin-bottom: 15px; /* Espaciado entre botones */
-    width: 100%; /* Ocupa todo el ancho del contenedor */
-    font-size: 18px; /* Tamaño de la fuente */
-    line-height: 1.4; /* Ajusta la altura entre líneas */
-    word-wrap: break-word; /* Permite que las palabras largas se dividan */
-    white-space: normal; /* Permite que el texto use varias líneas */
-    min-height: 100px; /* Altura mínima para cuadros más grandes */
-    cursor: pointer;
-    transition: transform 0.3s, background-color 0.3s;
-    box-sizing: border-box; /* Incluye bordes y padding en el tamaño */
-}
-
-#answers button:hover {
-    background-color: #e9ecef; /* Fondo claro al pasar el cursor */
-    transform: scale(1.05); /* Agrandar ligeramente al pasar el cursor */
-}
-
-#answers button.active {
-    background-color: #007bff; /* Fondo azul para botón activo */
-    color: white; /* Texto blanco */
-    border-color: #0056b3; /* Borde más oscuro */
+.row-justify-content-center{
+display:flex;
 }

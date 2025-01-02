@@ -1,7 +1,7 @@
 
 body{
     height: 100vh;
-    background:linear-gradient(#0849ea,#04277c,#000000);
+    background:linear-gradient(#005187,#84b6f4);
     display: flex;
     justify-content: center;
   align-items: center;
@@ -80,10 +80,12 @@ nav {
 .container{
   border-radius: 20px;
     width: 100%;
-    background: linear-gradient(#a9c2ff,#0849ea,#04277c);
+    background: linear-gradient(#fff,#fff);
     height: 80%;
     padding: 20px;
     position: center;
+    margin-left: 200px;
+    margin-right: 200px;
 }
 .container .img{
     width: 140px;

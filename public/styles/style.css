@@ -229,8 +229,8 @@ header{
     border-color: #0056b3; /* Borde más oscuro */
 }
 .card{
+    justify-content: center;
     border: 2px solid black;
     border-radius: 20px;
-    background-color: #005187;
-
+    background-image:url("/images/fondo.png") ;
 }

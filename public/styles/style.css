@@ -1,135 +1,124 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@100;200;300;400;500;600;700;800&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto Condensed';
+    font-family: 'Roboto Condensed', sans-serif;
 }
-body{
+
+body {
     height: 100vh;
-    background:linear-gradient(#005187,#84b6f4);
+    background: linear-gradient(#005187, #84b6f4);
     display: flex;
     justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    align-items: center;
+    flex-direction: column;
 }
+
 nav {
-  background-color: #0b2e83; 
-  width: 99%;
-  height: 6%;
-  border-radius: 80px;
+    background-color: #0b2e83;
+    width: 99%;
+    height: 6%;
+    border-radius: 80px;
+    max-width: 1200px;
+    margin: 10px auto;
 }
 
 .navbar {
-  display: flex;
-  justify-content: space-around;
-  padding: 14px 0;
-  list-style: none;
-  margin: 0;
-  width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 14px 0;
+    list-style: none;
+    margin: 0;
+    width: 100%;
 }
 
 .navbar li a {
-  text-decoration: none;
-  color: #FFFFFF;
-  padding: 8px 8px;
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 8px 8px;
 }
 
 .navbar li a:hover {
-  background-color: #10a4ad;
-  border-radius: 8px;
-}
-/* Estilo básico para los inputs de radio */
-.custom-radio-btn {
-    appearance: none; /* Elimina el estilo predeterminado del botón */
-    width: 20px;
-    height: 20px;
-    border: 2px solid #007bff;
-    border-radius: 50%;
-    outline: none;
-    cursor: pointer;
-    position: relative;
-    transition: background-color 0.3s, border-color 0.3s;
+    background-color: #10a4ad;
+    border-radius: 8px;
 }
 
-/* Estilo cuando el radio está seleccionado */
-.custom-radio-btn:checked {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-/* Estilo del label como botón */
-.custom-radio-btn + label {
-    display: inline-block;
-    padding: 10px 20px;
-    border: 2px solid #007bff;
-    border-radius: 5px;
-    background-color: white;
-    color: #007bff;
-    cursor: pointer;
-    margin-left: 10px; /* Deja espacio entre el radio button y el label */
-    transition: background-color 0.3s, color 0.3s;
-}
-
-/* Estilo cuando el botón de radio está seleccionado y el label también */
-.custom-radio-btn:checked + label {
-    background-color: #007bff;
-    color: white;
-}
-
-/* Hover sobre el label */
-.custom-radio-btn + label:hover {
-    background-color: #007bff;
-    color: white;
-}
-
-.container{
-  border-radius: 20px;
+.container {
+    border-radius: 20px;
     width: 100%;
-    background: linear-gradient(#fff,#fff);
-    height: 80%;
+    max-width: 1200px;
+    background: linear-gradient(#fff, #fff);
     padding: 20px;
-    position: center;
+    margin: 20px auto;
+    box-sizing: border-box;
 }
-.container .img{
-    width: 140px;
-    position: absolute;
-    top: -60px;
-    right: -90px;
-    z-index: -1;
 
-}
-.text-center{
+.text-center {
     background-color: #FFFFFF;
     border-radius: 20px;
-    width:80%;
-    position: center;
-    height: 30%;
+    width: 80%;
+    margin: 10px auto;
     padding: 10px;
 }
 
-.form-check-input{
-    background-color: #000000;
+.card {
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-image: url("/images/fondo.png");
 }
-header{
-    background-color: #6b5ae4;
-    color: #fff;
-    text-align: center;
-    font-size: 12px;
-    padding: 10px;
-    border-radius: 50px;
-    box-shadow: 3px 3px 5px #2a2929;
-    display: flex;
-    justify-content: space-between;
+
+#answers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
     align-items: center;
 }
-.inicio{
+
+#answers button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: black;
+    background-color: #ffffff;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    width: 100%;
+    font-size: 18px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    white-space: normal;
+    min-height: 100px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    box-sizing: border-box;
+}
+
+#answers button:hover {
+    background-color: #e9ecef;
+    transform: scale(1.05);
+}
+
+#answers button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+}
+
+.inicio {
     text-align: center;
     padding-top: 80px;
     color: #fff;
     font-size: 20px;
 }
-.inicio input{
+
+.inicio input {
     display: block;
     width: 200px;
     margin: 10px auto;
@@ -140,7 +129,8 @@ header{
     text-align: center;
     margin-top: 30px;
 }
-.btn{
+
+.btn {
     background-color: #66499e;
     color: #fff;
     border: 0;
@@ -154,83 +144,50 @@ header{
     font-size: 16px;
     transition: .3s;
 }
-.btn:hover{
+
+.btn:hover {
     background-color: #2a2929;
 }
 
-.puntaje, .jugador{
-    display: flex;
-    align-items: center;
-}
-.puntaje img, .jugador img{
-    width: 40px;
-    background-color: #3f40ae;
-    border-radius: 50%;
-    border: 2px solid #ffe43a;
-    z-index: 2;
-}
-.puntaje .puntos{
-    background-color: #3f40ae;
-    width: 90px;
-    padding: 5px;
-    border-radius: 0 30px 30px 0;
-    margin-left: -5px;
-    z-index: 0;
-    font-size: 16px;
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
 
+    #answers {
+        grid-template-columns: 1fr;
+    }
+
+    .inicio {
+        font-size: 16px;
+    }
+
+    .inicio input, .btn {
+        width: 150px;
+        font-size: 14px;
+    }
 }
 
-.jugador .nombre{
-    background-color: #3f40ae;
-    width: 90px;
-    padding: 5px;
-    border-radius: 30px 0px 0px 30px;
-    margin-right: -5px;
-    font-size: 16px;
-}
-#answers {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
-    gap: 20px; /* Espaciado entre los botones */
-    justify-content: center; /* Centrar las columnas */
-    align-items: center; /* Centrar verticalmente */
-}
+@media (max-width: 480px) {
+    nav {
+        width: 95%;
+        height: auto;
+        padding: 10px;
+    }
 
-#answers button {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente el contenido */
-    align-items: center; /* Centra verticalmente el contenido */
-    text-align: center; /* Centra el texto dentro del botón */
-    color: black; /* Texto en negro */
-    background-color: #ffffff; /* Fondo blanco */
-    border: 2px solid #007bff; /* Borde azul */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 10px 15px; /* Espaciado interno */
-    margin-bottom: 15px; /* Espaciado entre botones */
-    width: 100%; /* Ocupa todo el ancho del contenedor */
-    font-size: 18px; /* Tamaño de la fuente */
-    line-height: 1.4; /* Ajusta la altura entre líneas */
-    word-wrap: break-word; /* Permite que las palabras largas se dividan */
-    white-space: normal; /* Permite que el texto use varias líneas */
-    min-height: 100px; /* Altura mínima para cuadros más grandes */
-    cursor: pointer;
-    transition: transform 0.3s, background-color 0.3s;
-    box-sizing: border-box; /* Incluye bordes y padding en el tamaño */
-}
+    .text-center {
+        width: 90%;
+    }
 
-#answers button:hover {
-    background-color: #e9ecef; /* Fondo claro al pasar el cursor */
-    transform: scale(1.05); /* Agrandar ligeramente al pasar el cursor */
-}
+    #answers button {
+        font-size: 14px;
+        padding: 8px;
+    }
 
-#answers button.active {
-    background-color: #007bff; /* Fondo azul para botón activo */
-    color: white; /* Texto blanco */
-    border-color: #0056b3; /* Borde más oscuro */
-}
-.card{
-    justify-content: center;
-    border: 2px solid black;
-    border-radius: 20px;
-    background-image:url("/images/fondo.png") ;
+    .inicio input, .btn {
+        width: 120px;
+        padding: 8px;
+        font-size: 12px;
+    }
 }

@@ -1,17 +1,20 @@
-
-body{
-    height: 100vh;
-    background:linear-gradient(#005187,#84b6f4);
-    display: flex;
-    justify-content: center;
+body {
+  height: 100vh;
+  background: linear-gradient(#005187, #84b6f4);
+  display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 0;
 }
+
 nav {
-  background-color: #000000; 
+  background-color: #000000;
   width: 99%;
   height: 6%;
   border-radius: 80px;
+  max-width: 1200px;
+  margin: 10px auto;
 }
 
 .navbar {
@@ -33,134 +36,70 @@ nav {
   background-color: #373efbDD;
   border-radius: 8px;
 }
-/* Estilo básico para los inputs de radio */
-.custom-radio-btn {
-    appearance: none; /* Elimina el estilo predeterminado del botón */
-    width: 20px;
-    height: 20px;
-    border: 2px solid #007bff;
-    border-radius: 50%;
-    outline: none;
-    cursor: pointer;
-    position: relative;
-    transition: background-color 0.3s, border-color 0.3s;
-}
 
-/* Estilo cuando el radio está seleccionado */
-.custom-radio-btn:checked {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-/* Estilo del label como botón */
-.custom-radio-btn + label {
-    display: inline-block;
-    padding: 10px 20px;
-    border: 2px solid #007bff;
-    border-radius: 5px;
-    background-color: white;
-    color: #007bff;
-    cursor: pointer;
-    margin-left: 10px; /* Deja espacio entre el radio button y el label */
-    transition: background-color 0.3s, color 0.3s;
-}
-
-/* Estilo cuando el botón de radio está seleccionado y el label también */
-.custom-radio-btn:checked + label {
-    background-color: #007bff;
-    color: white;
-}
-
-/* Hover sobre el label */
-.custom-radio-btn + label:hover {
-    background-color: #007bff;
-    color: white;
-}
-
-.container{
+.container {
   border-radius: 20px;
-    width: 100%;
-    background: linear-gradient(#fff,#fff);
-    height: 80%;
-    padding: 20px;
-    position: center;
-    max-width: 1200px; /* Ancho máximo del contenedor */
-    margin: 20px auto; /* Centra horizontalmente y deja espacio vertical */
-    padding: 20px; /* Espaciado interno */
-    box-sizing: border-box; /* Para que el padding no afecte el ancho */
+  width: 100%;
+  max-width: 1200px;
+  background: linear-gradient(#fff, #fff);
+  height: auto;
+  padding: 20px;
+  margin: 20px auto;
+  box-sizing: border-box;
 }
 
-.container .img{
-    width: 140px;
-    position: absolute;
-    top: -60px;
-    right: -90px;
-    z-index: -1;
-
-}
-header{
-    background-color: #6b5ae4;
-    color: #fff;
-    text-align: center;
-    font-size: 12px;
-    padding: 10px;
-    border-radius: 50px;
-    box-shadow: 3px 3px 5px #2a2929;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.inicio{
-    text-align: center;
-    padding-top: 80px;
-    color: #fff;
-    font-size: 20px;
-}
-.inicio input{
-    display: block;
-    width: 200px;
-    margin: 10px auto;
-    font-size: 16px;
-    padding: 10px;
-    border-radius: 50px;
-    border: 0;
-    text-align: center;
-    margin-top: 30px;
-}
-.btn{
-    background-color: #66499e;
-    color: #fff;
-    border: 0;
-    padding: 10px;
-    font-weight: bold;
-    border-radius: 50px;
-    margin-top: 30px;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 16px;
-    transition: .3s;
-}
-.btn:hover{
-    background-color: #2a2929;
-}
-
+/* Grid para las imágenes */
 .row-justify-content-center {
-    display: grid; /* Usamos Grid Layout */
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
-    gap: 20px; /* Espacio entre las celdas */
-    justify-items: center; /* Centrar contenido en cada celda */
-    align-items: center; /* Centrar verticalmente */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+}
+
+/* Imágenes con medidas relativas */
+.imagenes {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 20px;
+}
+
+.titulo {
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px 0;
+  font-size: 1.5rem;
+}
+
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .row-justify-content-center {
+      grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
   }
-  
   .imagenes {
-    width: 200px; /* Ancho de las imágenes */
-    height: 200px; /* Alto de las imágenes */
-    border-radius: 20px; /* Borde redondeado */
+      max-width: 150px; /* Reducir el tamaño de las imágenes */
   }
   .titulo {
-    text-align: center; /* Centrar el texto horizontalmente */
-    margin: 0 auto; /* Centrar el elemento horizontalmente */
-    padding: 20px 0; /* Espaciado superior e inferior opcional */
+      font-size: 1.2rem;
   }
-  
+}
+
+@media (max-width: 480px) {
+  nav {
+      width: 95%;
+      height: auto;
+      padding: 10px;
+  }
+  .navbar {
+      flex-direction: column;
+      gap: 10px;
+  }
+  .imagenes {
+      max-width: 120px;
+  }
+}
+#logo{
+  width: 100px;
+  height: 100px;
+}

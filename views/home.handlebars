@@ -9,28 +9,86 @@
 </head>
 
 <body>
-    <div class="container my-5">
-        <p class="titulo">¿Sobré que quieres practicar hoy?</p>
-    <div class="row-justify-content-center">
-        <div class="col-md-6 d-flex justify-content-center">
-            <a href="/calculo">
-                <img class="imagenes" src="images/calculo.png" alt="Cálculo">
-            </a>
-        </div>
-        <div class="col-md-6 d-flex justify-content-center">
-            <a href="/algebra">
-                <img class="imagenes" src="images/algebra.jpg" alt="Álgebra">
-            </a>
-        </div>
-        <div class="col-md-6 d-flex justify-content-center">
-            <img class="imagenes" src="images/fisica.png" alt="Placeholder">
-        </div>
-        <div class="col-md-6 d-flex justify-content-center">
-            <img class="imagenes" src="images/programacion.jpg" alt="Placeholder">
-        </div>
+<div class="container">
+    <div class="cards">
+      <label id="summary">
+        <input type="checkbox" />
+        <article>
+          <div class="front" id="calculo">
+             <header>
+              <h2>Summary</h2>
+              <span class="material-symbols-outlined"> more_vert </span>
+            </header>
+            <var>Calculo</var>
+          </div>
+          <div class="back">
+            <header id="textodetras">
+              <h2>¡Pon a prueba tus conocimientos de Cálculo!</h2>
+            </header>
+            <p id="textodetras"> Practica inecuaciones, derivadas, integrales y más. ¿Listo para demostrar lo que sabes? 🚀</p>
+            <a href="calculo"><button class="button-19">ir a practicar</button></a>
+          </div>
+        </article>
+      </label>
+      <label id="overdue">
+        <input type="checkbox" />
+        <article>
+          <div class="front" id="algebra">
+            <header>
+              <h2>Overdue</h2>
+              <span class="material-symbols-outlined"> more_vert </span>
+            </header>
+            <var>Algebra</var>
+          </div>
+          <div class="back">
+            <header id="textodetras">
+              <h2>¡Reta tus habilidades con este quiz de Álgebra!</h2>
+            </header>
+            <p id="textodetras">Ecuaciones, matrices, factorización y más. ¿Te atreves a resolverlo? 🚀</p>
+             <a href="calculo"><button class="button-19">ir a practicar</button></a>
+          </div>
+        </article>
+      </label>
+      <label id="features">
+        <input type="checkbox" />
+        <article>
+          <div class="front" id="fisica">
+            <header>
+              <h2>Features</h2>
+              <span class="material-symbols-outlined"> more_vert </span>
+            </header>
+            <var>Fisica</var>
+          </div>
+          <div class="back">
+            <header id="textodetras">
+              <h2>¡Pon a prueba tu ingenio con este quiz de Física!</h2>
+            </header>
+            <p id="textodetras">Leyes, fuerzas, energía y mucho más. ¿Listo para el desafío? 🚀</p>
+            <a href="calculo"><button class="button-19">ir a practicar</button></a>
+          </div>
+        </article>
+      </label>
+      <label id="summary">
+        <input type="checkbox" />
+        <article>
+          <div class="front" id="programacion">
+            <header>
+              <h2>Summary</h2>
+              <span class="material-symbols-outlined"> more_vert </span>
+            </header>
+            <var>Programacion</var>
+          </div>
+          <div class="back">
+            <header id="textodetras">
+              <h2>¡Demuestra tu lógica con este quiz de Programación!</h2>
+            </header>
+            <p id="textodetras">Algoritmos, estructuras de datos, funciones y más. ¿Te atreves a intentarlo? 🚀</p>
+            <a href="calculo"><button class="button-19">ir a practicar</button></a>
+          </div>
+        </article>
+      </label>
     </div>
 </div>
-
     <p style="color: #84b6f4;"> hola gabrielaaa</p>
 </body>
 

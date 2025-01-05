@@ -11,19 +11,27 @@ body {
 nav {
   background-color: #000000;
   width: 99%;
-  height: 6%;
+  height: 8%; /* Ajusta la altura de la navbar */
   border-radius: 80px;
   max-width: 1200px;
   margin: 10px auto;
+  display: flex;
+  justify-content: center; /* Centra los elementos dentro de la navbar */
+  align-items: center; /* Alinea los elementos verticalmente */
 }
 
 .navbar {
   display: flex;
   justify-content: space-around;
-  padding: 14px 0;
+  align-items: center; /* Alinea los elementos verticalmente */
   list-style: none;
   margin: 0;
   width: 100%;
+}
+.navbar li {
+  display: flex;
+  justify-content: center; /* Alinea el contenido dentro del li */
+  align-items: center; /* Asegura que los elementos dentro de li estén centrados */
 }
 
 .navbar li a {
@@ -35,6 +43,18 @@ nav {
 .navbar li a:hover {
   background-color: #373efbDD;
   border-radius: 8px;
+}
+.navbar li img {
+  vertical-align: middle; /* Asegura que la imagen esté alineada correctamente */
+  max-height: 100%; /* Asegura que la imagen no sobrepase la altura de la navbar */
+  max-width: 100%; /* Asegura que la imagen no sobrepase el ancho de la navbar */
+}
+#logo {
+  width: 80px; /* Ajusta el tamaño del logo */
+  height: auto; /* Mantén la proporción de la imagen */
+  display: block; /* Elimina cualquier espacio extra debajo de la imagen */
+  max-height: 100%; /* Asegura que no se sobrepase de la altura de la navbar */
+  max-width: 100%; /* Asegura que no se desborde en ancho */
 }
 
 .container {
@@ -71,6 +91,191 @@ nav {
   padding: 20px 0;
   font-size: 1.5rem;
 }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
+  gap: 30px;
+  justify-items: center;
+}
+
+
+article {
+  position: relative;
+  perspective: 1000px;
+  width: 220px;
+  height: 220px;
+}
+
+article header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  margin-bottom: 26px;
+}
+
+article header h2 {
+  font-size: 20px;
+}
+
+article .front,
+article .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  backface-visibility: hidden;
+  background: #000000;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
+  padding: 24px;
+  transition: 0.6s;
+  cursor: pointer;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+input {
+  position: absolute;
+  scale: 0;
+}
+
+input:checked ~ article .back {
+  transform: rotateY(0);
+}
+
+input:checked ~ article .front {
+  transform: rotateY(-180deg);
+}
+
+article var {
+  font-style: normal;
+  font-size: 35px;
+  line-height: 1;
+}
+
+article h3 {
+  margin: 0 0 30px;
+  font-weight: 500;
+}
+#summary :is(var, h3) {
+  color: #3b82f6;
+}
+
+#overdue :is(var, h3) {
+  color: #ef4444;
+}
+#features :is(var, h3) {
+  color: #22c55e;
+}
+
+article :is(h4, p) {
+  opacity: 0.5;
+  font-size: 20px;
+}
+
+article p {
+  margin-top: 30px;
+  font-size: 15px;
+  font-weight: bold;
+}
+#calculo{
+  background-image: url("/images/calculo.png");
+}
+#algebra{
+  background-image: url("/images/algebra.jpg");
+}
+#fisica{
+  background-image: url("/images/fisica.png");
+}
+#programacion{
+  background-image: url("/images/programacion.jpg");
+}
+#textodetras{
+  color: #005187;
+}
+.button-19 {
+  appearance: button;
+  background-color: #1899D6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.button-19:after {
+  background-clip: padding-box;
+  background-color: #1CB0F6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.button-19,
+.button-19:focus {
+  user-select: auto;
+}
+
+.button-19:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+.button-19:disabled {
+  cursor: auto;
+}
+
+.button-19:active {
+  border-width: 4px 0 0;
+  background: none;
+}
+/* Ocultar el botón por defecto */
+article .back .button-19 {
+  display: none;
+}
+
+/* Mostrar el botón solo cuando se dé la vuelta */
+input:checked ~ article .back .button-19 {
+  display: block;
+}
+.back a {
+  text-decoration: none;
+}
+
 
 /* Media queries para pantallas más pequeñas */
 @media (max-width: 768px) {
@@ -99,7 +304,12 @@ nav {
       max-width: 120px;
   }
 }
-#logo{
-  width: 100px;
-  height: 100px;
+
+
+
+
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr; /* 1 columna */
+  }
 }

@@ -36,7 +36,7 @@ app.get('/programacion', (req, res) => {
 app.get('/quizcalculo', (req, res) => {
   res.render('quizcalculo');
 });
-app.get('/quizaalgebra', (req, res) => {
+app.get('/quizalgebra', (req, res) => {
   res.render('quizalgebra');
 });
 

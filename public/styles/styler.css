@@ -1,12 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@100;200;300;400;500;600;700;800&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Roboto Condensed';
-}
-
 body {
   height: 100vh;
   background: linear-gradient(#005187, #84b6f4);

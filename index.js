@@ -33,11 +33,11 @@ app.get('/fisica', (req, res) => {
 app.get('/programacion', (req, res) => {
   res.render('programacion');
 });
-app.get('/quiz', (req, res) => {
-  res.render('quiz');
+app.get('/quizcalculo', (req, res) => {
+  res.render('quizcalculo');
 });
-app.get('/quiza', (req, res) => {
-  res.render('quiza');
+app.get('/quizaalgebra', (req, res) => {
+  res.render('quizalgebra');
 });
 
 app.get('/result', (req, res) => {

@@ -27,6 +27,12 @@ app.get('/calculo', (req, res) => {
 app.get('/algebra', (req, res) => {
   res.render('algebra');
 });
+app.get('/fisica', (req, res) => {
+  res.render('fisica');
+});
+app.get('/programacion', (req, res) => {
+  res.render('programacion');
+});
 app.get('/quiz', (req, res) => {
   res.render('quiz');
 });

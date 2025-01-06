@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <!-- Incluir Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/styles/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <!-- Card 1 -->
+            <div class="col-md-3">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalVectores">
+                    <div class="card-body">
+                        <h5 class="card-title">Vectores</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-3">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalLeyesNewton">
+                    <div class="card-body">
+                        <h5 class="card-title">Leyes de Newton</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-3">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalTrabajo">
+                    <div class="card-body">
+                        <h5 class="card-title">Trabajo y Energía</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-md-3">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalMovimiento">
+                    <div class="card-body">
+                        <h5 class="card-title">Movimiento</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col-md-3 mt-3">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalOndas">
+                    <div class="card-body">
+                        <h5 class="card-title">Ondas</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="col-md-3 mt-3">
+                <div class="card" data-bs-toggle="modal" data-bs-target="#modalElectricidad">
+                    <div class="card-body">
+                        <h5 class="card-title">Electricidad y Magnetismo</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Vectores -->
+    <div class="modal fade" id="modalVectores" tabindex="-1" aria-labelledby="modalVectoresLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalVectoresLabel">Seleccione una categoría - Vectores</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="categoryFormVectores">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="vectores1" value="Magnitud y dirección">
+                            <label class="form-check-label" for="vectores1">Magnitud y dirección</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="vectores2" value="Producto escalar y vectorial">
+                            <label class="form-check-label" for="vectores2">Producto escalar y vectorial</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="saveCategoryVectores">Guardar selección</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Leyes de Newton -->
+    <div class="modal fade" id="modalLeyesNewton" tabindex="-1" aria-labelledby="modalLeyesNewtonLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLeyesNewtonLabel">Seleccione una categoría - Leyes de Newton</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="categoryFormLeyesNewton">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="leyesNewton1" value="Primera Ley">
+                            <label class="form-check-label" for="leyesNewton1">Primera Ley</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="leyesNewton2" value="Segunda Ley">
+                            <label class="form-check-label" for="leyesNewton2">Segunda Ley</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="leyesNewton3" value="Tercera Ley">
+                            <label class="form-check-label" for="leyesNewton3">Tercera Ley</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="saveCategoryLeyesNewton">Guardar selección</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Trabajo y Energía -->
+    <div class="modal fade" id="modalTrabajo" tabindex="-1" aria-labelledby="modalTrabajoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTrabajoLabel">Seleccione una categoría - Trabajo y Energía</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="categoryFormTrabajo">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="trabajo1" value="Trabajo mecánico">
+                            <label class="form-check-label" for="trabajo1">Trabajo mecánico</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="trabajo2" value="Energía cinética">
+                            <label class="form-check-label" for="trabajo2">Energía cinética</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="trabajo3" value="Energía potencial">
+                            <label class="form-check-label" for="trabajo3">Energía potencial</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="saveCategoryTrabajo">Guardar selección</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Movimiento -->
+    <div class="modal fade" id="modalMovimiento" tabindex="-1" aria-labelledby="modalMovimientoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalMovimientoLabel">Seleccione una categoría - Movimiento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="categoryFormMovimiento">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="movimiento1" value="Cinemática">
+                            <label class="form-check-label" for="movimiento1">Cinemática</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="movimiento2" value="Dinámica">
+                            <label class="form-check-label" for="movimiento2">Dinámica</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="saveCategoryMovimiento">Guardar selección</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JS personalizado -->
+    <script>
+        // Función para manejar la selección de categoría
+        function handleCategorySave(modalId, formId) {
+            const selectedCategory = document.querySelector(`#${formId} input[name="category"]:checked`);
+            if (selectedCategory) {
+                // Almacenar la categoría seleccionada en el localStorage
+                localStorage.setItem('selectedCategory', selectedCategory.value);
+
+                // Cerrar el modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById(modalId));
+                modal.hide();
+
+                // Redirigir a la página del cuestionario
+                window.location.href = "/quizfisica";
+            } else {
+                alert('Por favor, selecciona una categoría.');
+            }
+        }
+
+        // Asignar eventos a los botones de guardar
+        document.getElementById('saveCategoryVectores').addEventListener('click', function() {
+            handleCategorySave('modalVectores', 'categoryFormVectores');
+        });
+
+        document.getElementById('saveCategoryLeyesNewton').addEventListener('click', function() {
+            handleCategorySave('modalLeyesNewton', 'categoryFormLeyesNewton');
+        });
+
+        document.getElementById('saveCategoryTrabajo').addEventListener('click', function() {
+            handleCategorySave('modalTrabajo', 'categoryFormTrabajo');
+        });
+
+        document.getElementById('saveCategoryMovimiento').addEventListener('click', function() {
+            handleCategorySave('modalMovimiento', 'categoryFormMovimiento');
+        });
+    </script>
+</body>
+
+</html>

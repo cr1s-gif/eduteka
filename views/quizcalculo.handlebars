@@ -19,7 +19,7 @@
                 <!-- Las respuestas se generarán aquí con JavaScript -->
             </div>
         </form>
-        <button id="hintButton" class="btn btn-info mt-3">Obtener una pista</button>
+<button id="hintButton" class="btn btn-info mt-3" data-bs-toggle="modal" data-bs-target="#hintModal">Obtener una pista</button>
         <div id="hint" class="mt-3 text-success"></div>
     </div>
 
@@ -240,13 +240,6 @@
             // Actualizar la fuente de la imagen en el modal
             document.getElementById('hintImage').src = imagenUrl;
 
-            // Inicializar el modal de Bootstrap
-            const hintModal = new bootstrap.Modal(document.getElementById('hintModal'), {
-                keyboard: false // Se puede configurar para que no cierre el modal con la tecla ESC
-            });
-
-            // Mostrar el modal
-            hintModal.show();
         });
         
     </script>

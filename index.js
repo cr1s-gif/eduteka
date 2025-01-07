@@ -39,6 +39,12 @@ app.get('/quizcalculo', (req, res) => {
 app.get('/quizalgebra', (req, res) => {
   res.render('quizalgebra');
 });
+app.get('/quizfisica', (req, res) => {
+  res.render('quizfisica');
+});
+app.get('/quizprogramacion', (req, res) => {
+  res.render('quizprogramacion');
+});
 
 app.get('/result', (req, res) => {
   res.render('result');

@@ -6,7 +6,7 @@
     <title>Cuestionario de Calculo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/styles/style.css" rel="stylesheet" type="text/css" />
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/3.21.1/minified.js"></script>
 <script type="text/javascript" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
@@ -58,139 +58,140 @@
             alert('No has seleccionado una categoría.');
             window.location.href = 'index.html'; // Redirigir al inicio si no hay categoría seleccionada
         }
-
-        // Banco de preguntas
-       const preguntas = {
+// Banco de preguntas
+const preguntas = {
     "DominioInecuaciones": [
         { 
-            "pregunta": "¿Cuál es el dominio de la inecuación \( \frac{1}{x - 2} > 0 \)?", 
+            "pregunta": "¿Cuál es el dominio de la inecuación \\( \\frac{1}{x - 2} > 0 \\)?", 
             "correcta": "x > 2", 
-            "incorrectas": ["x < 2", "x \geq 2", "x = 2"],
+            "incorrectas": ["x < 2", "x \\geq 2", "x = 2"],
             "imagen": "public/images/calculo.png" 
         },
         { 
-            "pregunta": "¿Qué condición debe cumplirse para que \( \sqrt{2x - 5} \geq 0 \)?", 
-            "correcta": "x \geq 5/2", 
-            "incorrectas": ["x > 5/2", "x \geq 0", "x \leq 5/2"],
+            "pregunta": "¿Qué condición debe cumplirse para que \\( \\sqrt{2x - 5} \\geq 0 \\)?", 
+            "correcta": "x \\geq 5/2", 
+            "incorrectas": ["x > 5/2", "x \\geq 0", "x \\leq 5/2"],
             "imagen": "imagenes/condicion-1.png"
         },
         { 
-            "pregunta": "¿Cuál es el dominio de la inecuación \( \frac{x + 3}{x^2 - 9} \leq 0 \)?", 
-            "correcta": "x < -3 o 0 \leq x < 3", 
-            "incorrectas": ["x > 3", "x \neq \pm 3", "x > 0 y x \neq 3"],
+            "pregunta": "¿Cuál es el dominio de la inecuación \\( \\frac{x + 3}{x^2 - 9} \\leq 0 \\)?", 
+            "correcta": "x < -3 \\text{ o } 0 \\leq x < 3", 
+            "incorrectas": ["x > 3", "x \\neq \\pm 3", "x > 0 \\text{ y } x \\neq 3"],
             "imagen": "imagenes/dominio-2.png"
         },
         { 
-            "pregunta": "¿Cuál es el dominio de la inecuación \( \frac{x^2 - 1}{x - 2} > 0 \)?", 
-            "correcta": "x \in (-\infty, -1) \cup (1, 2) \cup (2, \infty)", 
-            "incorrectas": ["x \neq 2", "x > 2", "x \leq 1"],
+            "pregunta": "¿Cuál es el dominio de la inecuación \\( \\frac{x^2 - 1}{x - 2} > 0 \\)?", 
+            "correcta": "x \\in (-\\infty, -1) \\cup (1, 2) \\cup (2, \\infty)", 
+            "incorrectas": ["x \\neq 2", "x > 2", "x \\leq 1"],
             "imagen": "imagenes/dominio-3.png"
         },
         { 
-            "pregunta": "¿Cuál es el dominio de la inecuación \( \frac{1}{x - 1} \leq 0 \)?", 
+            "pregunta": "¿Cuál es el dominio de la inecuación \\( \\frac{1}{x - 1} \\leq 0 \\)?", 
             "correcta": "x < 1", 
-            "incorrectas": ["x > 1", "x \geq 1", "x = 1"],
+            "incorrectas": ["x > 1", "x \\geq 1", "x = 1"],
             "imagen": "imagenes/inecuacion-1.png"
         }
     ],
-    "DominioFunciones": [
-        { 
-            "pregunta": "¿Cuál es el dominio de la función \( f(x) = \frac{1}{x - 3} \)?", 
-            "correcta": "x \neq 3", 
-            "incorrectas": ["x > 3", "x \geq 3", "x < 3"],
-            "imagen": "imagenes/funcion-1.png"
-        },
-        { 
-            "pregunta": "¿Cuál es el dominio de la función \( f(x) = \sqrt{x - 5} \)?", 
-            "correcta": "x \geq 5", 
-            "incorrectas": ["x > 5", "x \leq 5", "x < 5"],
-            "imagen": "imagenes/funcion-2.png"
-        }
-    ],
-    "RecorridoFunciones": [
-        { 
-            "pregunta": "¿Cuál es el recorrido de la función \( f(x) = x^2 + 1 \)?", 
-            "correcta": "\\([1, \\infty)\\)", 
-            "incorrectas": ["\\((-\\infty, 1]\\)", "\\((-\\infty, \\infty)\\)", "\\([0, \\infty)\\)"],
-            "imagen": "imagenes/recorrido-1.png"
-        }
-    ],
-    "CálculoLímite": [
-        { 
-            "pregunta": "¿Cuál es el valor de \\\lim_{x \\\to 2} \\\frac{x^2 - 4}{x - 2} \\\)?", 
-            "correcta": "4", 
-            "incorrectas": ["2", "8", "Indeterminado"],
-            "imagen": "imagenes/limite-1.png"
-        }
-    ],
-    "CálculoDerivada": [
-        { 
-            "pregunta": "¿Cuál es la derivada de \\\f(x) = x^3\\?", 
-            "correcta": "3x^2", 
-            "incorrectas": ["x^2", "3x^3", "x^3 + 1"],
-            "imagen": "imagenes/derivada-1.png"
-        },
-        { 
-            "pregunta": "¿Cuál es la derivada de \\\f(x) = e^{2x}\\?", 
-            "correcta": "2e^{2x}", 
-            "incorrectas": ["e^{2x}", "2xe^{2x}", "4e^{2x}"],
-            "imagen": "imagenes/derivada-2.png"
-        }
-    ],
-    "ReglaDeLaCadena": [
-        { 
-            "pregunta": "¿Cuál es la derivada de \\\f(x) = (3x^2 + 1)^5\\ usando la regla de la cadena?", 
-            "correcta": "30x(3x^2 + 1)^4", 
-            "incorrectas": ["15x(3x^2 + 1)^4", "5(3x^2 + 1)^4", "(3x^2 + 1)^5"],
-            "imagen": "imagenes/regla-cadena-1.png"
-        }
-    ],
-    "PuntosDeInflexión": [
-        { 
-            "pregunta": "¿Cuál es el punto de inflexión de \\\f(x) = x^3 - 3x^2 + 4\\?", 
-            "correcta": "x = 1", 
-            "incorrectas": ["x = 0", "x = -1", "x = 2"],
-            "imagen": "imagenes/inflexion-1.png"
-        }
-    ],
-    "DerivadaImplícita": [
-        { 
-           "pregunta": "Encuentra la derivada de \( x^2 + y^2 = 1 \) usando derivada implícita.", 
-            "correcta": "y' = -x/y", 
-            "incorrectas": ["y' = x/y", "y' = -y/x", "y' = x + y"],
-            "imagen": "imagenes/implicita-1.png"
-        }
-    ],
-    "RazónDeCambio": [
-        { 
-            "pregunta": "Si el radio de un círculo crece a razón de 2 cm/s, ¿a qué velocidad crece el área cuando el radio es 3 cm?", 
-            "correcta": "12\\pi cm^2/s", 
-            "incorrectas": ["6\\pi cm^2/s", "18\\pi cm^2/s", "24\\pi cm^2/s"],
-            "imagen": "imagenes/razon-cambio-1.png"
-        }
-    ],
-    "Primitiva": [
-        { 
-            "pregunta": "¿Cuál es la integral indefinida de \\\f(x) = 2x\\?", 
-            "correcta": "x^2 + C", 
-            "incorrectas": ["2x + C", "\\frac{2}{x} + C", "x^3 + C"],
-            "imagen": "imagenes/integral-1.png"
-        },
-        { 
-            "pregunta": "¿Cuál es la integral indefinida de \\\f(x) = e^x\\?", 
-            "correcta": "e^x + C", 
-            "incorrectas": ["\\frac{e^x}{x} + C", "x + C", "\\ln|x| + C"],
-            "imagen": "imagenes/integral-2.png"
-        }
-    ],
-    "IntegralTrigonométrica": [
-        { 
-            "pregunta": "¿Cuál es la integral de \\\f(x) = \\\\sin(x)\\?", 
-            "correcta": "-\\cos(x) + C", 
-            "incorrectas": ["\\sin(x) + C", "\\tan(x) + C", "\\cos(x) + C"],
-            "imagen": "imagenes/integral-trig-1.png"
-        }
-    ],
+"DominioFunciones": [
+    { 
+        "pregunta": "¿Cuál es el dominio de la función \\( f(x) = \\frac{1}{x - 3} \\)?", 
+        "correcta": "x \\neq 3", 
+        "incorrectas": ["x > 3", "x \\geq 3", "x < 3"],
+        "imagen": "imagenes/funcion-1.png"
+    },
+    { 
+        "pregunta": "¿Cuál es el dominio de la función \\( f(x) = \\sqrt{x - 5} \\)?", 
+        "correcta": "x \\geq 5", 
+        "incorrectas": ["x > 5", "x \\leq 5", "x < 5"],
+        "imagen": "imagenes/funcion-2.png"
+    }
+]
+,
+"RecorridoFunciones": [
+    { 
+        "pregunta": "¿Cuál es el recorrido de la función \( f(x) = x^2 + 1 \)?", 
+        "correcta": "[1, \\infty)", 
+        "incorrectas": ["(-\\infty, 1]", "(-\\infty, \\infty)", "[0, \\infty)"],
+        "imagen": "imagenes/recorrido-1.png"
+    }
+]
+,
+"CálculoLímite": [
+    { 
+        "pregunta": "¿Cuál es el valor de \\( \\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} \\)?", 
+        "correcta": "4", 
+        "incorrectas": ["2", "8", "Indeterminado"],
+        "imagen": "imagenes/limite-1.png"
+    }
+],
+"CálculoDerivada": [
+    { 
+        "pregunta": "¿Cuál es la derivada de \\( f(x) = x^3 \\)?", 
+        "correcta": "3x^2", 
+        "incorrectas": ["x^2", "3x^3", "x^3 + 1"],
+        "imagen": "imagenes/derivada-1.png"
+    },
+    { 
+        "pregunta": "¿Cuál es la derivada de \\( f(x) = e^{2x} \\)?", 
+        "correcta": "2e^{2x}", 
+        "incorrectas": ["e^{2x}", "2xe^{2x}", "4e^{2x}"],
+        "imagen": "imagenes/derivada-2.png"
+    }
+],
+"ReglaDeLaCadena": [
+    { 
+        "pregunta": "¿Cuál es la derivada de \\( f(x) = (3x^2 + 1)^5 \\) usando la regla de la cadena?", 
+        "correcta": "30x(3x^2 + 1)^4", 
+        "incorrectas": ["15x(3x^2 + 1)^4", "5(3x^2 + 1)^4", "(3x^2 + 1)^5"],
+        "imagen": "imagenes/regla-cadena-1.png"
+    }
+],
+"PuntosDeInflexión": [
+    { 
+        "pregunta": "¿Cuál es el punto de inflexión de \\( f(x) = x^3 - 3x^2 + 4 \\)?", 
+        "correcta": "x = 1", 
+        "incorrectas": ["x = 0", "x = -1", "x = 2"],
+        "imagen": "imagenes/inflexion-1.png"
+    }
+],
+"DerivadaImplícita": [
+    { 
+        "pregunta": "Encuentra la derivada de \\( x^2 + y^2 = 1 \\) usando derivada implícita.", 
+        "correcta": "y' = -\\frac{x}{y}", 
+        "incorrectas": ["y' = \\frac{x}{y}", "y' = -\\frac{y}{x}", "y' = x + y"],
+        "imagen": "imagenes/implicita-1.png"
+    }
+],
+"RazónDeCambio": [
+    { 
+        "pregunta": "Si el radio de un círculo crece a razón de 2 cm/s, ¿a qué velocidad crece el área cuando el radio es 3 cm?", 
+        "correcta": "12\\pi cm²/s", 
+        "incorrectas": ["6\\pi cm²/s", "18\\pi cm²/s", "24\\pi cm²/s"],
+        "imagen": "imagenes/razon-cambio-1.png"
+    }
+],
+"Primitiva": [
+    { 
+        "pregunta": "¿Cuál es la integral indefinida de \\( f(x) = 2x \\)?", 
+        "correcta": "\\( x^2 + C \\)", 
+        "incorrectas": ["\\( 2x + C \\)", "\\( \\frac{2}{x} + C \\)", "\\( x^3 + C \\)"],
+        "imagen": "imagenes/integral-1.png"
+    },
+    { 
+        "pregunta": "¿Cuál es la integral indefinida de \\( f(x) = e^x \\)?", 
+        "correcta": "\\( e^x + C \\)", 
+        "incorrectas": ["\\( \\frac{e^x}{x} + C \\)", "\\( x + C \\)", "\\( \\ln|x| + C \\)"],
+        "imagen": "imagenes/integral-2.png"
+    }
+],
+"IntegralTrigonométrica": [
+    { 
+        "pregunta": "¿Cuál es la integral de \\( f(x) = \\sin(x) \\)?", 
+        "correcta": "\\( -\\cos(x) + C \\)", 
+        "incorrectas": ["\\( \\sin(x) + C \\)", "\\( \\tan(x) + C \\)", "\\( \\cos(x) + C \\)"],
+        "imagen": "imagenes/integral-trig-1.png"
+    }
+],
     "SumaDeRiemann": [
         { 
             "pregunta": "¿Qué representa la suma de Riemann para una función continua en un intervalo cerrado?", 
@@ -288,12 +289,12 @@ function mostrarPregunta() {
         answersDiv.appendChild(button);
     });
 
-    // Usar MathJax.Hub.Queue para procesar el contenido
+    // Procesar MathJax después de añadir las respuestas
     setTimeout(() => {
         if (typeof MathJax !== 'undefined') {
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById("answers")]);
+            MathJax.typeset();
         }
-    }, 0); // Usar un timeout para evitar llamada recursiva inmediata
+    }, 0);
 }
 
 

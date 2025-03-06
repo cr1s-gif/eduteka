@@ -4,12 +4,16 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { neon } from '@neondatabase/serverless';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = 3000;
+const sql = neon(
+  'postgresql://neondb_owner:npg_TpBnzE1gfI0w@ep-mute-glade-a8neb6xe-pooler.eastus2.azure.neon.tech/neondb?sslmode=require'
+);
 
 // Middleware
 app.use(cookieParser());
@@ -53,7 +57,11 @@ app.get('/fisica', (req, res) => res.render('fisica'));
 app.get('/programacion', (req, res) => res.render('programacion'));
 
 // Rutas para los quizzes
-app.get('/quizcalculo', (req, res) => res.render('quizcalculo'));
+app.get('/quizcalculo', async (req, res) => {
+  const preguntasc = await sql('SELECT * FROM calculo');
+  console.log("Preguntas obtenidas:", preguntasc); // Depuración
+  res.render('quizcalculo', { preguntasc });
+});
 app.get('/quizalgebra', (req, res) => res.render('quizalgebra'));
 app.get('/quizfisica', (req, res) => res.render('quizfisica'));
 app.get('/quizprogramacion', (req, res) => res.render('quizprogramacion'));

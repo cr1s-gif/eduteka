@@ -11,11 +11,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@neondatabase/serverless": "^0.10.4",
     "@types/node": "^18.0.6",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "express": "^4.21.1",
     "express-handlebars": "^8.0.1",
+    "neon": "^2.0.0",
     "openai": "^4.68.3"
   }
 }

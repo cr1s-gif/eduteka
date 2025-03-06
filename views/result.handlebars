@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,8 +26,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="solutionContent">
-                    <!-- Aquí se mostrará la imagen de la solución -->
-                    <img id="solutionImage" src="" alt="Solución" class="img-fluid">
+                    <!-- Aquí se mostrará la explicación correcta -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -38,45 +37,37 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Array de imágenes correspondientes a las soluciones de las preguntas
-        const solutionImages = {
-            "¿Cuál es la derivada de x^2?": "Imagenes/descarga.png",
-            "¿Qué es 2 + 2?": "imagenes/suma.jpg",
-            "¿Cuál es el océano más grande?": "imagenes/oceano.jpg"
-            // Agrega más preguntas con sus respectivas imágenes
-        };
-
         const userAnswers = JSON.parse(localStorage.getItem('userAnswers'));
         const resultsList = document.getElementById('resultsList');
 
         userAnswers.forEach(answer => {
             const resultDiv = document.createElement('div');
             resultDiv.className = "result-item mb-3";
-            resultDiv.innerHTML = `<strong>Pregunta:</strong> ${answer.pregunta}<br>
-                                  <strong>Tu respuesta:</strong> \\(${answer.respuestaSeleccionada}\\)<br>
-                                  <strong>${answer.esCorrecto ? "Respuesta correcta!" : "Respuesta incorrecta."}</strong><br>`;
 
-            // Si la respuesta es incorrecta, añadir un botón para mostrar la solución en forma de imagen
+            resultDiv.innerHTML = `
+                <strong>Pregunta:</strong> ${answer.pregunta}<br>
+                <strong>Tu respuesta:</strong> \\(${answer.respuestaSeleccionada}\\)<br>
+                <strong>${answer.esCorrecto ? "<span class='text-success'>¡Respuesta correcta! 🎉</span>" : "<span class='text-danger'>Respuesta incorrecta.</span>"}</strong><br>
+            `;
+
+            // Si la respuesta es incorrecta, mostrar el botón para ver la explicación
             if (!answer.esCorrecto) {
                 const solutionButton = document.createElement("button");
                 solutionButton.classList.add("btn", "btn-primary", "mt-2");
-                solutionButton.textContent = "Mostrar solución";
+                solutionButton.textContent = "Mostrar explicación";
                 solutionButton.dataset.bsToggle = "modal";
                 solutionButton.dataset.bsTarget = "#solutionModal";
 
-                // Asignar la imagen de la solución cuando se hace clic en el botón
                 solutionButton.addEventListener("click", () => {
-                    document.getElementById("solutionModalLabel").innerText = `Solución para: ${answer.pregunta}`;
-                    const solutionImage = document.getElementById("solutionImage");
-                    const imageSrc = solutionImages[answer.pregunta];
+                    document.getElementById("solutionModalLabel").innerText = `Explicación para: ${answer.pregunta}`;
+                    const solutionContent = document.getElementById("solutionContent");
 
-                    if (imageSrc) {
-                        solutionImage.src = imageSrc; // Asignar la imagen correspondiente a la pregunta
-                        solutionImage.alt = `Solución para ${answer.pregunta}`;
-                    } else {
-                        solutionImage.src = ""; // Si no hay imagen, limpiar la src
-                        solutionImage.alt = "No hay imagen disponible para esta pregunta";
-                    }
+                    // Mostrar la respuesta correcta de la base de datos en formato MathJax
+                    solutionContent.innerHTML = `<strong>Respuesta correcta:</strong> \\(${answer.respuestaCorrecta}\\)<br>
+                                                 <strong>Explicación:</strong> ${answer.explicacion}`;
+                    
+                    // Procesar MathJax para las ecuaciones
+                    MathJax.typesetPromise();
                 });
 
                 resultDiv.appendChild(solutionButton);
@@ -85,10 +76,10 @@
             resultsList.appendChild(resultDiv);
         });
 
-        // Forzar MathJax para que procese el contenido dinámico
-        MathJax.typeset();
+        // Forzar MathJax para procesar ecuaciones dinámicas
+        MathJax.typesetPromise();
 
-        // Limpiar el almacenamiento después de mostrar resultados
+        // Limpiar almacenamiento local después de mostrar los resultados
         localStorage.removeItem('userAnswers');
     </script>
 

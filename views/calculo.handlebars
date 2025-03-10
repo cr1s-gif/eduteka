@@ -274,22 +274,30 @@
 <!-- JS personalizado -->
 <script>
     // Función para manejar la selección de categoría
-    function handleCategorySave(modalId, formId) {
-        const selectedCategory = document.querySelector(`#${formId} input[name="category"]:checked`);
-        if (selectedCategory) {
-            // Almacenar la categoría seleccionada en el localStorage
-            localStorage.setItem('selectedCategory', selectedCategory.value);
+function handleCategorySave(modalId, formId) {
+    const selectedCategory = document.querySelector(`#${formId} input[name="category"]:checked`);
+    if (selectedCategory) {
+        // Almacenar la categoría seleccionada en el localStorage
+        localStorage.setItem('selectedCategory', selectedCategory.value);
 
-            // Cerrar el modal
-            const modal = bootstrap.Modal.getInstance(document.getElementById(modalId));
-            modal.hide();
+        // Cerrar el modal
+        const modal = new bootstrap.Modal(document.getElementById(modalId));
+        modal.hide();
 
-            // Redirigir a la página del cuestionario
-            window.location.href = "/quizcalculo";
-        } else {
-            alert('Por favor, selecciona una categoría.');
-        }
+        // Redirigir a la URL con la categoría seleccionada
+        window.location.href = `/quizcalculo?categoria=${encodeURIComponent(selectedCategory.value)}`;
     }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedCategory = urlParams.get("categoria");
+
+    if (selectedCategory) {
+        console.log("Categoría seleccionada:", selectedCategory);
+        // Aquí puedes hacer algo con la categoría, como mostrar contenido dinámico
+    }
+});
 
     // Asignar eventos a los botones de guardar
     document.getElementById('saveCategoryInecuaciones').addEventListener('click', function() {

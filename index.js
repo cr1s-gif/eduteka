@@ -58,7 +58,7 @@ app.get('/programacion', (req, res) => res.render('programacion'));
 
 // Rutas para los quizzes
 app.get('/quizcalculo', async (req, res) => {
-  const preguntasc = await sql('SELECT * FROM calculo');
+  const preguntasc = await sql('SELECT * FROM dominioinecuaciones');
   console.log("Preguntas obtenidas:", preguntasc); // Depuración
   res.render('quizcalculo', { preguntasc });
 });

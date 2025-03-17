@@ -59,12 +59,20 @@ app.get('/programacion', (req, res) => res.render('programacion'));
 // Rutas para los quizzes
 app.get('/quizcalculo', async (req, res) => {
   const preguntasc = await sql('SELECT * FROM dominioinecuaciones');
-  console.log("Preguntas obtenidas:", preguntasc); // Depuración
   res.render('quizcalculo', { preguntasc });
 });
-app.get('/quizalgebra', (req, res) => res.render('quizalgebra'));
-app.get('/quizfisica', (req, res) => res.render('quizfisica'));
-app.get('/quizprogramacion', (req, res) => res.render('quizprogramacion'));
+app.get('/quizalgebra', async(req, res) => {
+  const preguntasa = await sql('SELECT * FROM dominioinecuaciones');
+  res.render('quizalgebra', { preguntasa });
+});
+app.get('/quizfisica', async(req, res) => {
+  const preguntasf = await sql('SELECT * FROM dominioinecuaciones');
+  res.render('quizfisica', { preguntasf });
+});
+app.get('/quizprogramacion', async(req, res) => {
+  const preguntasp = await sql('SELECT * FROM dominioinecuaciones');
+  res.render('quizprogramacion', { preguntasp });
+});
 
 // Ruta para mostrar los resultados
 app.get('/result', (req, res) => res.render('result'));

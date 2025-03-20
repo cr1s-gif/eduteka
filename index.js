@@ -58,7 +58,7 @@ app.get('/programacion', (req, res) => res.render('programacion'));
 
 // Rutas para los quizzes
 app.get('/quizcalculo', async (req, res) => {
-  const preguntasc = await sql('SELECT * FROM dominioinecuaciones');
+  const preguntasc = await sql('SELECT * FROM dominioinecuaciones union calculoderivadas union calculodeseries union calculolimites union derivadaimplicita union derivadasenvariasvariables union dominiofunciones union dominioinecuaciones union graficafunciones union integralesindefinidas union integralesmultiples union integralesporfraccionesparciales union integralporpartes union integraltrigonometrica union primitiva union puntosdeinflexion union razondecambio union recorridofunciones union regladelacadena union sumasderiemann union sustitucionsimple');
   res.render('quizcalculo', { preguntasc });
 });
 app.get('/quizalgebra', async(req, res) => {

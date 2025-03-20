@@ -58,7 +58,7 @@ app.get('/programacion', (req, res) => res.render('programacion'));
 
 // Rutas para los quizzes
 app.get('/quizcalculo', async (req, res) => {
-  const preguntasc = await sql('SELECT * FROM dominioinecuaciones union calculoderivadas union calculodeseries union calculolimites union derivadaimplicita union derivadasenvariasvariables union dominiofunciones union dominioinecuaciones union graficafunciones union integralesindefinidas union integralesmultiples union integralesporfraccionesparciales union integralporpartes union integraltrigonometrica union primitiva union puntosdeinflexion union razondecambio union recorridofunciones union regladelacadena union sumasderiemann union sustitucionsimple');
+  const preguntasc = await sql('SELECT * FROM dominioinecuaciones UNION SELECT * FROM calculoderivadas UNION SELECT * FROM calculodeseries UNION SELECT * FROM calculolimites UNION SELECT * FROM derivadaimplicita UNION SELECT * FROM derivadasenvariasvariables UNION SELECT * FROM dominiofunciones UNION SELECT * FROM graficafunciones UNION SELECT * FROM integralesindefinidas UNION SELECT * FROM integralesmultiples UNION SELECT * FROM integralesporfraccionesparciales UNION SELECT * FROM integralporpartes UNION SELECT * FROM integraltrigonometrica UNION SELECT * FROM primitivas UNION SELECT * FROM puntosdeinflexion UNION SELECT * FROM razondecambio UNION SELECT * FROM recorridofunciones UNION SELECT * FROM regladelacadena UNION SELECT * FROM sumasderiemann UNION SELECT * FROM sustitucionsimple');
   res.render('quizcalculo', { preguntasc });
 });
 app.get('/quizalgebra', async(req, res) => {

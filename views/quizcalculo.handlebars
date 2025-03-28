@@ -45,7 +45,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // Obtiene las preguntas del backend mediante Handlebars
     const preguntas = [
         {{#each preguntasc}}
         {
@@ -60,32 +59,32 @@
         {{/each}}
     ];
 
-function obtenerCategoriaSeleccionada() {
-    const params = new URLSearchParams(window.location.search);
-    let categoria = params.get('categoria');
-
-    console.log("Categoría obtenida de URL:", categoria); // <-- Agregar este log
-
-    if (!categoria) {
-        categoria = localStorage.getItem('categoriaSeleccionada');
-        console.log("Categoría obtenida de localStorage:", categoria); // <-- Agregar este log
+    function obtenerCategoriaSeleccionada() {
+        const params = new URLSearchParams(window.location.search);
+        let categoria = params.get('categoria');
+        if (!categoria) {
+            categoria = localStorage.getItem('categoriaSeleccionada');
+        }
+        if (categoria) {
+            categoria = categoria.trim().toLowerCase();
+            localStorage.setItem('categoriaSeleccionada', categoria);
+        }
+        return categoria;
     }
 
-    if (categoria) {
-        categoria = categoria.trim().toLowerCase();
-        localStorage.setItem('categoriaSeleccionada', categoria);
+    function seleccionarPreguntasAleatorias(array, cantidad) {
+        const copiaArray = [...array];
+        const seleccionadas = [];
+        while (seleccionadas.length < cantidad && copiaArray.length > 0) {
+            const indiceAleatorio = Math.floor(Math.random() * copiaArray.length);
+            seleccionadas.push(copiaArray.splice(indiceAleatorio, 1)[0]);
+        }
+        return seleccionadas;
     }
-
-    return categoria;
-}
-
 
     const categoriaSeleccionada = obtenerCategoriaSeleccionada();
-    console.log("Categoría seleccionada:", categoriaSeleccionada);
-
-    // Filtra preguntas por la categoría seleccionada
     const preguntasFiltradas = preguntas.filter(p => p.categoria === categoriaSeleccionada);
-    console.log("Preguntas filtradas:", preguntasFiltradas);
+    const preguntasSeleccionadas = seleccionarPreguntasAleatorias(preguntasFiltradas, 5);
 
     let currentQuestionIndex = 0;
     let selectedAnswer = null;
@@ -95,16 +94,15 @@ function obtenerCategoriaSeleccionada() {
         const questionTitle = document.getElementById('questionTitle');
         const answersDiv = document.getElementById('answers');
 
-        if (preguntasFiltradas.length === 0) {
+        if (preguntasSeleccionadas.length === 0) {
             questionTitle.innerHTML = "No hay preguntas disponibles para esta categoría.";
             answersDiv.innerHTML = '';
             return;
         }
 
-        const preguntaSeleccionada = preguntasFiltradas[currentQuestionIndex];
+        const preguntaSeleccionada = preguntasSeleccionadas[currentQuestionIndex];
         questionTitle.innerHTML = preguntaSeleccionada.enunciado;
 
-        // Mezclar respuestas
         const respuestas = [preguntaSeleccionada.correcta, ...preguntaSeleccionada.incorrectas];
         respuestas.sort(() => Math.random() - 0.5);
 
@@ -124,10 +122,8 @@ function obtenerCategoriaSeleccionada() {
             answersDiv.appendChild(button);
         });
 
-        // Mostrar la pista de la pregunta actual
         document.getElementById('pistaTexto').innerHTML = preguntaSeleccionada.pista || "No hay pista disponible.";
 
-        // Si MathJax está disponible, renderiza expresiones matemáticas
         if (typeof MathJax !== 'undefined') {
             MathJax.typesetPromise();
         }
@@ -141,8 +137,7 @@ function obtenerCategoriaSeleccionada() {
             return;
         }
 
-        const preguntaActual = preguntasFiltradas[currentQuestionIndex];
-
+        const preguntaActual = preguntasSeleccionadas[currentQuestionIndex];
         respuestasUsuario.push({
             enunciado: preguntaActual.enunciado,
             respuestaSeleccionada: selectedAnswer,
@@ -152,7 +147,7 @@ function obtenerCategoriaSeleccionada() {
         });
 
         currentQuestionIndex++;
-        if (currentQuestionIndex < preguntasFiltradas.length) {
+        if (currentQuestionIndex < preguntasSeleccionadas.length) {
             selectedAnswer = null;
             mostrarPregunta();
         } else {
@@ -161,8 +156,7 @@ function obtenerCategoriaSeleccionada() {
         }
     });
 
-    // Inicia mostrando la primera pregunta
-    if (preguntasFiltradas.length > 0) {
+    if (preguntasSeleccionadas.length > 0) {
         mostrarPregunta();
     }
 </script>

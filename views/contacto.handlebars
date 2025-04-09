@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacto | Eduteka</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f2f2f2;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+
+  <script>
+    (function() {
+      emailjs.init("_VWXHSjn8Y44b27c0"); // ⬅️ Reemplaza con tu ID de usuario de EmailJS
+    })();
+
+    function enviarFormulario(e) {
+      e.preventDefault();
+
+      const title = document.getElementById("asunto").value;
+      const message = document.getElementById("mensaje").value;
+
+      emailjs.send("service_8944ogu", "template_75wj1m4", {
+        title: title,
+        message: message,
+        para_email: "eduteka.info@gmail.com"
+      })
+      .then(function(response) {
+        alert("Mensaje enviado correctamente. ¡Gracias por contactarnos!");
+        document.getElementById("form-contacto").reset();
+      }, function(error) {
+        console.error("Error al enviar", error);
+        alert("Ocurrió un error al enviar el mensaje. Intenta más tarde.");
+      });
+    }
+  </script>
+</head>
+<body>
+  <h2>Contacto</h2>
+  <form id="form-contacto" onsubmit="enviarFormulario(event)">
+    <label for="asunto">Asunto:</label>
+    <input type="text" id="asunto" name="asunto" required>
+
+    <label for="mensaje">Mensaje:</label>
+    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+    <button type="submit">Enviar</button>
+  </form>
+</body>
+</html>

@@ -50,7 +50,7 @@ app.get('/accept-cookies', (req, res) => {
 app.get('/', (req, res) => {
   res.render('home'); // Renderiza la vista de inicio
 });
-
+app.get('/contacto', (req, res) => res.render('contacto'));
 app.get('/calculo', (req, res) => res.render('calculo'));
 app.get('/algebra', (req, res) => res.render('algebra'));
 app.get('/fisica', (req, res) => res.render('fisica'));
